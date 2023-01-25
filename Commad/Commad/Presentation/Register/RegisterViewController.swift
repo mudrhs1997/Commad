@@ -22,7 +22,7 @@ class RegisterViewController: UIViewController {
     private let nameField: UITextField = {
         var textField = UITextField(frame: CGRect(origin: .zero, size: .zero))
         textField.borderStyle = .line
-        textField.frame = CGRect(x: 0, y: 0, width: 300, height: 100)
+        textField.frame = CGRect(origin: .zero, size: .zero)
         return textField
     }()
     
@@ -36,14 +36,18 @@ class RegisterViewController: UIViewController {
     private let numberField: UITextField = {
         var textField = UITextField(frame: CGRect(origin: .zero, size: .zero))
         textField.borderStyle = .line
-        textField.frame = CGRect(x: 0, y: 0, width: 300, height: 100)
+        textField.frame = CGRect(origin: .zero, size: .zero)
         return textField
     }()
     
     private let sendButton: UIButton = {
         var button = UIButton(frame: CGRect(origin: .zero, size: .zero))
         button.setTitle("전송", for: .normal)
-        button.backgroundColor = .yellow
+        button.titleLabel?.font = .boldSystemFont(ofSize: 28)
+        button.titleLabel?.textColor = .white
+        button.backgroundColor = .commad
+        button.layer.cornerRadius = 8
+        button.clipsToBounds = true
         return button
     }()
 
@@ -69,34 +73,36 @@ class RegisterViewController: UIViewController {
         sendButton.addTarget(self, action: #selector(registerUser(_:)), for: .touchUpInside)
         
         self.nameLabel.snp.makeConstraints { make in
-            make.top.leading.equalToSuperview().offset(100)
+            make.top.equalToSuperview().offset(150)
+            make.leading.equalToSuperview().offset(30)
+            make.trailing.equalToSuperview().offset(-30)
         }
         
         self.nameField.snp.makeConstraints { make in
-            make.width.equalTo(250)
-            make.height.equalTo(50)
-            make.leading.equalToSuperview().offset(100)
             make.top.equalTo(nameLabel).offset(20)
+            make.leading.equalToSuperview().offset(30)
+            make.trailing.equalToSuperview().offset(-30)
+            make.height.equalTo(50)
         }
         
         self.numberLabel.snp.makeConstraints { make in
-            make.leading.equalToSuperview().offset(100)
             make.top.equalTo(nameField.snp.bottom).offset(20)
+            make.leading.equalToSuperview().offset(30)
+            make.trailing.equalToSuperview().offset(-30)
         }
         
         self.numberField.snp.makeConstraints { make in
-            make.width.equalTo(250)
-            make.height.equalTo(50)
-            make.leading.equalToSuperview().offset(100)
             make.top.equalTo(numberLabel).offset(20)
+            make.leading.equalToSuperview().offset(30)
+            make.trailing.equalToSuperview().offset(-30)
+            make.height.equalTo(50)
         }
         
         self.sendButton.snp.makeConstraints { make in
-            make.width.equalTo(250)
-            make.height.equalTo(50)
-            make.leading.equalToSuperview().offset(100)
             make.top.equalTo(numberField.snp.bottom).offset(20)
-            
+            make.leading.equalToSuperview().offset(30)
+            make.trailing.equalToSuperview().offset(-30)
+            make.height.equalTo(50)
         }
     }
     
