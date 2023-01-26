@@ -12,6 +12,7 @@
 		C144E1AE2980DC81009DC614 /* SwiftLayoutUtil in Frameworks */ = {isa = PBXBuildFile; productRef = C144E1AD2980DC81009DC614 /* SwiftLayoutUtil */; };
 		C144E1B02980E78C009DC614 /* CalculatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C144E1AF2980E78C009DC614 /* CalculatorView.swift */; };
 		C144E1B22980F64E009DC614 /* HomeHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C144E1B12980F64E009DC614 /* HomeHeaderView.swift */; };
+		C144E1B529824A39009DC614 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C144E1B429824A39009DC614 /* LoginViewController.swift */; };
 		C149FFF22977EF7900A11083 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C149FFF12977EF7900A11083 /* RegisterViewController.swift */; };
 		C149FFF52977F25600A11083 /* CalculatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C149FFF42977F25600A11083 /* CalculatorViewController.swift */; };
 		C149FFF8298009AC00A11083 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C149FFF7298009AC00A11083 /* TabBarController.swift */; };
@@ -30,6 +31,7 @@
 		B44353D429D1DCC47BA3D948 /* Pods-Commad.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Commad.release.xcconfig"; path = "Target Support Files/Pods-Commad/Pods-Commad.release.xcconfig"; sourceTree = "<group>"; };
 		C144E1AF2980E78C009DC614 /* CalculatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorView.swift; sourceTree = "<group>"; };
 		C144E1B12980F64E009DC614 /* HomeHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHeaderView.swift; sourceTree = "<group>"; };
+		C144E1B429824A39009DC614 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		C149FFF12977EF7900A11083 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		C149FFF42977F25600A11083 /* CalculatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorViewController.swift; sourceTree = "<group>"; };
 		C149FFF7298009AC00A11083 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
@@ -73,6 +75,14 @@
 				560E17CD439C7C99351DA426 /* Pods_Commad.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C144E1B3298249E2009DC614 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				C144E1B429824A39009DC614 /* LoginViewController.swift */,
+			);
+			path = Login;
 			sourceTree = "<group>";
 		};
 		C149FFF02977EF5D00A11083 /* Register */ = {
@@ -221,6 +231,7 @@
 		C1F1B0202976A3C200B4A233 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				C144E1B3298249E2009DC614 /* Login */,
 				C149FFF62980098000A11083 /* TabBar */,
 				C149FFF32977F21B00A11083 /* Calculator */,
 				C149FFF02977EF5D00A11083 /* Register */,
@@ -395,6 +406,7 @@
 				C144E1B02980E78C009DC614 /* CalculatorView.swift in Sources */,
 				C149FFFB298013F600A11083 /* UIColor+Extensions.swift in Sources */,
 				C1F1B00D297696A400B4A233 /* SceneDelegate.swift in Sources */,
+				C144E1B529824A39009DC614 /* LoginViewController.swift in Sources */,
 				C149FFF22977EF7900A11083 /* RegisterViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -538,6 +550,7 @@
 				DEVELOPMENT_TEAM = KL2HAQ9H72;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Commad/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -570,6 +583,7 @@
 				DEVELOPMENT_TEAM = KL2HAQ9H72;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Commad/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";

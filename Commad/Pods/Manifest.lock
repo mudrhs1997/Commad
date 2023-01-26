@@ -1,4 +1,5 @@
 PODS:
+  - Alamofire (5.6.4)
   - Firebase/CoreOnly (10.4.0):
     - FirebaseCore (= 10.4.0)
   - Firebase/Database (10.4.0):
@@ -18,6 +19,17 @@ PODS:
   - GoogleUtilities/Logger (7.11.0):
     - GoogleUtilities/Environment
   - "GoogleUtilities/NSData+zlib (7.11.0)"
+  - KakaoSDKAuth (2.13.1):
+    - KakaoSDKCommon (= 2.13.1)
+  - KakaoSDKCommon (2.13.1):
+    - KakaoSDKCommon/Common (= 2.13.1)
+    - KakaoSDKCommon/Network (= 2.13.1)
+  - KakaoSDKCommon/Common (2.13.1)
+  - KakaoSDKCommon/Network (2.13.1):
+    - Alamofire (~> 5.1)
+    - KakaoSDKCommon/Common (= 2.13.1)
+  - KakaoSDKUser (2.13.1):
+    - KakaoSDKAuth (= 2.13.1)
   - leveldb-library (1.22.1)
   - PromisesObjC (2.1.1)
   - RxSwift (6.5.0)
@@ -25,32 +37,43 @@ PODS:
 
 DEPENDENCIES:
   - Firebase/Database
+  - KakaoSDKAuth
+  - KakaoSDKCommon
+  - KakaoSDKUser
   - RxSwift (= 6.5.0)
   - SnapKit
 
 SPEC REPOS:
   trunk:
+    - Alamofire
     - Firebase
     - FirebaseCore
     - FirebaseCoreInternal
     - FirebaseDatabase
     - GoogleUtilities
+    - KakaoSDKAuth
+    - KakaoSDKCommon
+    - KakaoSDKUser
     - leveldb-library
     - PromisesObjC
     - RxSwift
     - SnapKit
 
 SPEC CHECKSUMS:
+  Alamofire: 4e95d97098eacb88856099c4fc79b526a299e48c
   Firebase: ba3501b5142a57747eac74d27c96d2b313bdec90
   FirebaseCore: b8697a177690b69b0dbce9d612b69b893be70469
   FirebaseCoreInternal: e301297f4c15a17489e48ed722d733b1578e0c02
   FirebaseDatabase: 91f6f2ecb55fa5dff37cc3f2aae9ed6d6bf05266
   GoogleUtilities: c2bdc4cf2ce786c4d2e6b3bcfd599a25ca78f06f
+  KakaoSDKAuth: d9de0cb0c723441ced3616d481952bde34438dcb
+  KakaoSDKCommon: a16807e19984a0a208c3117c7ef117f101a9a128
+  KakaoSDKUser: 92d34cf6af7b123c22a7ee44424332123e356901
   leveldb-library: 50c7b45cbd7bf543c81a468fe557a16ae3db8729
   PromisesObjC: ab77feca74fa2823e7af4249b8326368e61014cb
   RxSwift: 5710a9e6b17f3c3d6e40d6e559b9fa1e813b2ef8
   SnapKit: e01d52ebb8ddbc333eefe2132acf85c8227d9c25
 
-PODFILE CHECKSUM: 5526948e826607dfc6422fe54022aaf39aa8655c
+PODFILE CHECKSUM: c7059e80de3477f2543d9d778403a3797abcf886
 
 COCOAPODS: 1.11.3

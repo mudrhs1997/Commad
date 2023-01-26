@@ -16,5 +16,10 @@ target 'Commad' do
   # SnapKit
   pod 'SnapKit'
 
+  # Kakao
+  pod 'KakaoSDKCommon'
+  pod 'KakaoSDKAuth'
+  pod 'KakaoSDKUser'
+
 
 end
