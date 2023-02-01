@@ -11,76 +11,95 @@ import SnapKit
 
 class HomeViewController: UIViewController {
     
-    private let mainLabel: UILabel = {
-        var label = UILabel()
-        label.text = "번호를 입력하세요"
-        label.frame = CGRect(origin: .zero, size: .zero)
-        label.font = .boldSystemFont(ofSize: 28)
-        return label
+    enum Section: CaseIterable {
+        case mainState, notices
+        
+        var title: String {
+            switch self {
+            case .mainState:
+                return "오늘은"
+            case .notices:
+                return "공지사항은"
+            }
+        }
+    }
+
+    private let mainCollectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.minimumLineSpacing = 0
+        layout.scrollDirection = .vertical
+        layout.sectionInset = .zero
+        
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.backgroundColor = .clear
+        collectionView.showsVerticalScrollIndicator = false
+        
+        collectionView.register(MainStateCell.self, forCellWithReuseIdentifier: MainStateCell.identirier)
+        collectionView.register(NoticeCell.self, forCellWithReuseIdentifier: NoticeCell.identifier)
+        return collectionView
     }()
     
-    private let mainTextField: UITextField = {
-        var textField = UITextField()
-        textField.frame = CGRect(origin: .zero, size: .zero)
-        textField.borderStyle = .line
-        textField.layer.borderWidth = 8
-        return textField
-    }()
     
-    private let mainButton: UIButton = {
-        var button = UIButton()
-        button.setTitle("click", for: .normal)
-        button.frame = CGRect(origin: .zero, size: .zero)
-        button.tintColor = .black
-        button.backgroundColor = .link
-        button.layer.cornerRadius = 10
-        button.clipsToBounds = true
-        return button
-    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
-//        mainButton.addTarget(self, action: #selector(changeName(_:)), for: .touchUpInside)
+        mainCollectionView.delegate = self
+        mainCollectionView.dataSource = self
+        configureViews()
     }
-    
-    @objc func changeName(_ sender: UIButton) {
-        let pushVC = RegisterViewController()
-        self.navigationController?.pushViewController(pushVC, animated: true)
-    }
-    
-        
-
 
 }
 
 extension HomeViewController {
-    override func viewDidLayoutSubviews() {
+    func configureViews() {
+        self.view.backgroundColor = .systemGray2
+        self.view.addSubview(mainCollectionView)
         
-        self.view.addSubview(mainLabel)
-        self.view.addSubview(mainTextField)
-        self.view.addSubview(mainButton)
-        
-        mainLabel.snp.makeConstraints { make in
-            make.leading.equalToSuperview().offset(30)
-            make.trailing.equalToSuperview().offset(-30)
-            make.height.equalTo(100)
-            make.top.equalToSuperview().offset(150)
+        mainCollectionView.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(self.view.safeAreaInsets.top*2)
+            make.leading.trailing.bottom.equalToSuperview()
         }
         
-        mainTextField.snp.makeConstraints { make in
-            make.leading.equalToSuperview().offset(30)
-            make.trailing.equalToSuperview().offset(-30)
-            make.top.equalTo(mainLabel).offset(100)
-            make.height.equalTo(120)
-        }
         
-        mainButton.snp.makeConstraints { make in
-            make.leading.equalToSuperview().offset(30)
-            make.trailing.equalToSuperview().offset(-30)
-            make.top.equalTo(mainTextField.snp.bottom).offset(40)
-            make.height.equalTo(120)
+    }
+    
+}
+
+extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 2
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        var cell = UICollectionViewCell()
+        
+        if indexPath.section == 0 {
+            cell = collectionView.dequeueReusableCell(withReuseIdentifier: "stateCell", for: indexPath) as! MainStateCell
+            return cell
+        } else {
+            cell = collectionView.dequeueReusableCell(withReuseIdentifier: "noticeCell", for: indexPath) as! NoticeCell
+            return cell
         }
     }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        if indexPath.section == 0 {
+            return CGSize(width: collectionView.bounds.width, height: collectionView.frame.height * 0.5)
+        } else {
+            return CGSize(width: collectionView.bounds.width, height: collectionView.frame.height * 0.4)
+        }
+        
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 0, left: 0, bottom: 100, right: 0)
+    }
+    
 }
+
 
