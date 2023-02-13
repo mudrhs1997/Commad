@@ -43,6 +43,7 @@ class HomeViewController: UIViewController {
         collectionView.register(MainStateCell.self, forCellWithReuseIdentifier: MainStateCell.identirier)
         collectionView.register(NoticeCell.self, forCellWithReuseIdentifier: NoticeCell.identifier)
         collectionView.register(FunctionCell.self, forCellWithReuseIdentifier: FunctionCell.identifier)
+        collectionView.register(RankingCell.self, forCellWithReuseIdentifier: RankingCell.identifier)
         return collectionView
     }()
     
@@ -55,9 +56,6 @@ class HomeViewController: UIViewController {
         configureViews()
     }
     
-    override func viewDidLayoutSubviews() {
-//        mainHeaderView.addGradient()
-    }
 
 
 }
@@ -74,7 +72,7 @@ extension HomeViewController {
         
         mainHeaderView.snp.makeConstraints { make in
             make.top.leading.trailing.equalToSuperview()
-            make.height.equalTo(250)
+            make.height.equalTo(200)
         }
         
         mainCollectionView.snp.makeConstraints { make in
@@ -92,11 +90,11 @@ extension HomeViewController {
 extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 3
+        return 4
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 2
+        return 1
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -108,8 +106,11 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         } else if indexPath.section == 1 {
             cell = collectionView.dequeueReusableCell(withReuseIdentifier: "noticeCell", for: indexPath) as! NoticeCell
             return cell
-        } else {
+        } else if indexPath.section == 2{
             cell = collectionView.dequeueReusableCell(withReuseIdentifier: "functionCell", for: indexPath) as! FunctionCell
+            return cell
+        } else {
+            cell = collectionView.dequeueReusableCell(withReuseIdentifier: "rankingCell", for: indexPath) as! RankingCell
             return cell
         }
     }
@@ -118,9 +119,9 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         if indexPath.section == 0 {
             return CGSize(width: collectionView.bounds.width, height: collectionView.frame.height * 0.4)
         } else if indexPath.section == 1 {
-            return CGSize(width: collectionView.bounds.width, height: collectionView.frame.height * 0.2)
+            return CGSize(width: collectionView.bounds.width, height: collectionView.frame.height * 0.25)
         } else {
-            return CGSize(width: collectionView.bounds.width, height: collectionView.frame.height * 0.3)
+            return CGSize(width: collectionView.bounds.width, height: collectionView.frame.height * 0.2)
         }
         
     }

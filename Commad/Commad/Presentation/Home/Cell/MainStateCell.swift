@@ -38,11 +38,22 @@ class MainStateCell: UICollectionViewCell {
         return label
     }()
     
-    private let middleView: UIView = {
-        var view = UIView()
-        view.backgroundColor = .clear
-        return view
+    private let monthlyCheckButton: UIButton = {
+        var button = UIButton()
+        button.frame = CGRect(origin: .zero, size: .zero)
+        button.backgroundColor = .darkGray
+        button.setTitle("오늘 누구 나왔나", for: .normal)
+        return button
     }()
+    
+    private let checkLocationButton: UIButton = {
+        var button = UIButton()
+        button.frame = CGRect(origin: .zero, size: .zero)
+        button.backgroundColor = .darkGray
+        button.setTitle("내 자리 어디지?", for: .normal)
+        return button
+    }()
+    
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -55,16 +66,6 @@ class MainStateCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
         
     }
-    
-    func makeCATransitionLabel(_ label: UILabel) {
-        let transition = CATransition()
-        transition.duration = 0.3
-        transition.timingFunction = .init(name: .easeInEaseOut)
-        transition.type = .push
-        transition.subtype = .fromBottom
-        label.layer.add(transition, forKey: CATransitionType.push.rawValue)
-    }
-
 
 }
 
@@ -75,7 +76,8 @@ extension MainStateCell {
         self.addSubview(userImage)
         self.addSubview(stateImage)
         self.addSubview(todayLabel)
-        self.addSubview(middleView)
+        self.addSubview(monthlyCheckButton)
+        self.addSubview(checkLocationButton)
         
         userImage.snp.makeConstraints { make in
             make.top.leading.equalToSuperview().inset(20)
@@ -94,11 +96,18 @@ extension MainStateCell {
             make.leading.equalTo(userImage.snp.trailing).offset(20)
         }
         
-        
-        middleView.snp.makeConstraints { make in
-            make.leading.trailing.bottom.equalToSuperview()
-            make.height.equalTo(20)
+        monthlyCheckButton.snp.makeConstraints { make in
+            make.top.equalTo(userImage.snp.bottom).offset(40)
+            make.leading.equalToSuperview().offset(20)
+            make.trailing.equalToSuperview().inset(20)
         }
+        
+        checkLocationButton.snp.makeConstraints { make in
+            make.top.equalTo(monthlyCheckButton.snp.bottom).offset(20)
+            make.leading.equalToSuperview().offset(20)
+            make.trailing.equalToSuperview().inset(20)
+        }
+        
         
     }
 }

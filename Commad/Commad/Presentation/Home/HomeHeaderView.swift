@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 
 class HomeHeaderView: UIView {
-    let maxHeight: CGFloat = 250
+    let maxHeight: CGFloat = 200
     let minHeight: CGFloat = 78
 
     private let headerImage: UIImageView = {
