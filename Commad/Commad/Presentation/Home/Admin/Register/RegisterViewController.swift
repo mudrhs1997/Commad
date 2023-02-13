@@ -70,7 +70,6 @@ class RegisterViewController: UIViewController {
         self.view.addSubview(numberField)
         self.view.addSubview(sendButton)
         
-        sendButton.addTarget(self, action: #selector(registerUser(_:)), for: .touchUpInside)
         
         self.nameLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(150)
