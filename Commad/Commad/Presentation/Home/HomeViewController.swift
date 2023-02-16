@@ -11,18 +11,6 @@ import SnapKit
 
 class HomeViewController: UIViewController {
     
-    enum Section: CaseIterable {
-        case mainState, notices
-        
-        var title: String {
-            switch self {
-            case .mainState:
-                return "오늘은"
-            case .notices:
-                return "공지사항은"
-            }
-        }
-    }
     
     private let mainHeaderView: HomeHeaderView = HomeHeaderView()
     private let backgoundImage: UIImageView = {
@@ -44,6 +32,7 @@ class HomeViewController: UIViewController {
         collectionView.register(NoticeCell.self, forCellWithReuseIdentifier: NoticeCell.identifier)
         collectionView.register(FunctionCell.self, forCellWithReuseIdentifier: FunctionCell.identifier)
         collectionView.register(RankingCell.self, forCellWithReuseIdentifier: RankingCell.identifier)
+        collectionView.register(BannerCell.self, forCellWithReuseIdentifier: BannerCell.identifier)
         return collectionView
     }()
     
@@ -56,6 +45,16 @@ class HomeViewController: UIViewController {
         configureViews()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.navigationBar.isHidden = true
+    }
+    
+    @objc
+    private func showEntranceViewController(_ sender: UIButton) {
+        let entranceViewController = EntranceViewController()
+        self.navigationController?.pushViewController(entranceViewController, animated: true)
+    }
 
 
 }
@@ -63,8 +62,8 @@ class HomeViewController: UIViewController {
 extension HomeViewController {
     func configureViews() {
         self.view.addSubview(backgoundImage)
-        self.view.addSubview(mainHeaderView)
         self.view.addSubview(mainCollectionView)
+        self.view.addSubview(mainHeaderView)
         
         backgoundImage.snp.makeConstraints { make in
             make.edges.equalToSuperview()
@@ -75,22 +74,20 @@ extension HomeViewController {
             make.height.equalTo(200)
         }
         
+        self.mainHeaderView.entranceButton.addTarget(self, action: #selector(self.showEntranceViewController), for: .touchUpInside)
+        
         mainCollectionView.snp.makeConstraints { make in
             make.top.equalTo(self.mainHeaderView.snp.bottom)
             make.leading.trailing.equalToSuperview()
-            make.bottom.equalToSuperview().offset(50)
+            make.bottom.equalToSuperview().offset(30)
         }
-        
-        
-        
     }
-    
 }
 
 extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 4
+        return 5
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -109,8 +106,11 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         } else if indexPath.section == 2{
             cell = collectionView.dequeueReusableCell(withReuseIdentifier: "functionCell", for: indexPath) as! FunctionCell
             return cell
-        } else {
+        } else if indexPath.section == 3{
             cell = collectionView.dequeueReusableCell(withReuseIdentifier: "rankingCell", for: indexPath) as! RankingCell
+            return cell
+        } else {
+            cell = collectionView.dequeueReusableCell(withReuseIdentifier: "bannerCell", for: indexPath) as! BannerCell
             return cell
         }
     }
@@ -127,7 +127,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 0, left: 0, bottom: 50, right: 0)
+        return UIEdgeInsets(top: 0, left: 0, bottom: 10, right: 0)
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {

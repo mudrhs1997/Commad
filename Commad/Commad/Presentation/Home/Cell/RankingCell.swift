@@ -30,6 +30,7 @@ class RankingCell: UICollectionViewCell {
 
 extension RankingCell {
     func configureViews() {
+        self.backgroundColor = .black
         addSubview(borderView)
         
         borderView.snp.makeConstraints { make in

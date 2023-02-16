@@ -11,6 +11,16 @@ import SnapKit
 class MainStateCell: UICollectionViewCell {
     static let identirier = "stateCell"
 
+    private let borderView: UIView = {
+        var view = UIView()
+        view.frame = CGRect(origin: .zero, size: .zero)
+        view.backgroundColor = .brown
+        view.layer.cornerRadius = 15
+        view.clipsToBounds = true
+        return view
+    }()
+    
+    
     private let userImage: UIImageView = {
         var image = UIImageView()
         image.image = UIImage(named: "image")
@@ -42,7 +52,7 @@ class MainStateCell: UICollectionViewCell {
         var button = UIButton()
         button.frame = CGRect(origin: .zero, size: .zero)
         button.backgroundColor = .darkGray
-        button.setTitle("오늘 누구 나왔나", for: .normal)
+        button.setTitle("Today's Commad", for: .normal)
         return button
     }()
     
@@ -50,7 +60,7 @@ class MainStateCell: UICollectionViewCell {
         var button = UIButton()
         button.frame = CGRect(origin: .zero, size: .zero)
         button.backgroundColor = .darkGray
-        button.setTitle("내 자리 어디지?", for: .normal)
+        button.setTitle("Seat", for: .normal)
         return button
     }()
     
@@ -73,11 +83,17 @@ extension MainStateCell {
     func configureViews() {
         self.backgroundColor = .black
         
+        self.addSubview(borderView)
         self.addSubview(userImage)
         self.addSubview(stateImage)
         self.addSubview(todayLabel)
         self.addSubview(monthlyCheckButton)
         self.addSubview(checkLocationButton)
+        
+        borderView.snp.makeConstraints { make in
+            make.top.leading.trailing.equalToSuperview().inset(10)
+            make.height.equalTo(120)
+        }
         
         userImage.snp.makeConstraints { make in
             make.top.leading.equalToSuperview().inset(20)

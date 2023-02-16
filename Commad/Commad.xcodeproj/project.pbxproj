@@ -21,13 +21,15 @@
 		C144E1C5298B8505009DC614 /* HomeDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C144E1C4298B8505009DC614 /* HomeDTO.swift */; };
 		C144E1C7298B9E5D009DC614 /* PersonRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C144E1C6298B9E5D009DC614 /* PersonRepository.swift */; };
 		C144E1CB298E3E16009DC614 /* AdminInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C144E1CA298E3E16009DC614 /* AdminInfoViewController.swift */; };
-		C144E1CE298E44F2009DC614 /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C144E1CD298E44F1009DC614 /* InfoView.swift */; };
 		C144E1D02990BC88009DC614 /* FunctionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C144E1CF2990BC88009DC614 /* FunctionCell.swift */; };
 		C149FFF22977EF7900A11083 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C149FFF12977EF7900A11083 /* RegisterViewController.swift */; };
 		C149FFF52977F25600A11083 /* CalculatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C149FFF42977F25600A11083 /* CalculatorViewController.swift */; };
 		C149FFF8298009AC00A11083 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C149FFF7298009AC00A11083 /* TabBarController.swift */; };
 		C149FFFB298013F600A11083 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C149FFFA298013F600A11083 /* UIColor+Extensions.swift */; };
 		C17D91B7299A2AB10061525E /* RankingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C17D91B6299A2AB10061525E /* RankingCell.swift */; };
+		C17D91BB299A59110061525E /* KeyPadCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C17D91BA299A59110061525E /* KeyPadCell.swift */; };
+		C17D91BF299B519A0061525E /* BannerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C17D91BE299B519A0061525E /* BannerCell.swift */; };
+		C17D91C1299B936D0061525E /* PassCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C17D91C0299B936D0061525E /* PassCodeView.swift */; };
 		C1F1B00B297696A400B4A233 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F1B00A297696A400B4A233 /* AppDelegate.swift */; };
 		C1F1B00D297696A400B4A233 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F1B00C297696A400B4A233 /* SceneDelegate.swift */; };
 		C1F1B00F297696A400B4A233 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F1B00E297696A400B4A233 /* HomeViewController.swift */; };
@@ -51,13 +53,15 @@
 		C144E1C4298B8505009DC614 /* HomeDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDTO.swift; sourceTree = "<group>"; };
 		C144E1C6298B9E5D009DC614 /* PersonRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonRepository.swift; sourceTree = "<group>"; };
 		C144E1CA298E3E16009DC614 /* AdminInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminInfoViewController.swift; sourceTree = "<group>"; };
-		C144E1CD298E44F1009DC614 /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
 		C144E1CF2990BC88009DC614 /* FunctionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunctionCell.swift; sourceTree = "<group>"; };
 		C149FFF12977EF7900A11083 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		C149FFF42977F25600A11083 /* CalculatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorViewController.swift; sourceTree = "<group>"; };
 		C149FFF7298009AC00A11083 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		C149FFFA298013F600A11083 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 		C17D91B6299A2AB10061525E /* RankingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingCell.swift; sourceTree = "<group>"; };
+		C17D91BA299A59110061525E /* KeyPadCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyPadCell.swift; sourceTree = "<group>"; };
+		C17D91BE299B519A0061525E /* BannerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerCell.swift; sourceTree = "<group>"; };
+		C17D91C0299B936D0061525E /* PassCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassCodeView.swift; sourceTree = "<group>"; };
 		C1F1B007297696A400B4A233 /* Commad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Commad.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1F1B00A297696A400B4A233 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C1F1B00C297696A400B4A233 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -102,6 +106,8 @@
 		C144E1B82988C1F7009DC614 /* Entrance */ = {
 			isa = PBXGroup;
 			children = (
+				C17D91BC299A591A0061525E /* Cell */,
+				C17D91C0299B936D0061525E /* PassCodeView.swift */,
 				C144E1B92988C22A009DC614 /* EntranceViewController.swift */,
 			);
 			path = Entrance;
@@ -114,6 +120,7 @@
 				C144E1BE29893D5E009DC614 /* NoticeCell.swift */,
 				C144E1CF2990BC88009DC614 /* FunctionCell.swift */,
 				C17D91B6299A2AB10061525E /* RankingCell.swift */,
+				C17D91BE299B519A0061525E /* BannerCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -133,14 +140,6 @@
 			children = (
 			);
 			path = User;
-			sourceTree = "<group>";
-		};
-		C144E1CC298E44CA009DC614 /* Information */ = {
-			isa = PBXGroup;
-			children = (
-				C144E1CD298E44F1009DC614 /* InfoView.swift */,
-			);
-			path = Information;
 			sourceTree = "<group>";
 		};
 		C149FFF02977EF5D00A11083 /* Register */ = {
@@ -236,6 +235,14 @@
 			path = Network;
 			sourceTree = "<group>";
 		};
+		C17D91BC299A591A0061525E /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				C17D91BA299A59110061525E /* KeyPadCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		C1F1AFFE297696A400B4A233 = {
 			isa = PBXGroup;
 			children = (
@@ -292,7 +299,6 @@
 		C1F1B0202976A3C200B4A233 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
-				C144E1CC298E44CA009DC614 /* Information */,
 				C144E1B82988C1F7009DC614 /* Entrance */,
 				C149FFF62980098000A11083 /* TabBar */,
 				C1F1B0242976A45500B4A233 /* Home */,
@@ -468,6 +474,7 @@
 				C144E1C7298B9E5D009DC614 /* PersonRepository.swift in Sources */,
 				C144E1B72987BD0B009DC614 /* UIView+Extensions.swift in Sources */,
 				C1F1B00B297696A400B4A233 /* AppDelegate.swift in Sources */,
+				C17D91BB299A59110061525E /* KeyPadCell.swift in Sources */,
 				C144E1B22980F64E009DC614 /* MainStateCell.swift in Sources */,
 				C144E1BF29893D5E009DC614 /* NoticeCell.swift in Sources */,
 				C144E1C3298B70ED009DC614 /* HomeHeaderView.swift in Sources */,
@@ -477,13 +484,14 @@
 				C149FFFB298013F600A11083 /* UIColor+Extensions.swift in Sources */,
 				C1F1B00D297696A400B4A233 /* SceneDelegate.swift in Sources */,
 				C144E1BD2988CB1B009DC614 /* Layouts.swift in Sources */,
-				C144E1CE298E44F2009DC614 /* InfoView.swift in Sources */,
 				C144E1D02990BC88009DC614 /* FunctionCell.swift in Sources */,
 				C144E1CB298E3E16009DC614 /* AdminInfoViewController.swift in Sources */,
+				C17D91C1299B936D0061525E /* PassCodeView.swift in Sources */,
 				C149FFF22977EF7900A11083 /* RegisterViewController.swift in Sources */,
 				C144E1BA2988C22A009DC614 /* EntranceViewController.swift in Sources */,
 				C144E1C1298A8408009DC614 /* HomeViewmodel.swift in Sources */,
 				C17D91B7299A2AB10061525E /* RankingCell.swift in Sources */,
+				C17D91BF299B519A0061525E /* BannerCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
