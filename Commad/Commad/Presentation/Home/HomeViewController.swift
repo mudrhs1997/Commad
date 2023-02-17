@@ -11,7 +11,15 @@ import SnapKit
 
 class HomeViewController: UIViewController {
     
+    let dbHelper = DBHelper.shared
+    var userData: [User] = []
     
+    private let tlabel: UILabel = {
+        var label = UILabel()
+        label.text = "wjdaaudrhs"
+        label.textColor = .white
+        return label
+    }()
     private let mainHeaderView: HomeHeaderView = HomeHeaderView()
     private let backgoundImage: UIImageView = {
         var image = UIImageView(image: UIImage(named: "background"))
@@ -48,6 +56,9 @@ class HomeViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.isHidden = true
+        userData = dbHelper.readData()
+        print(userData)
+        tlabel.text = userData[0].userName!
     }
     
     @objc
@@ -64,9 +75,15 @@ extension HomeViewController {
         self.view.addSubview(backgoundImage)
         self.view.addSubview(mainCollectionView)
         self.view.addSubview(mainHeaderView)
+        self.view.addSubview(tlabel)
+        
         
         backgoundImage.snp.makeConstraints { make in
             make.edges.equalToSuperview()
+        }
+        
+        tlabel.snp.makeConstraints { make in
+            make.top.leading.equalTo(backgoundImage).inset(100)
         }
         
         mainHeaderView.snp.makeConstraints { make in

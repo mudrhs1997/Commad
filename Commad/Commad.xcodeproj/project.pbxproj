@@ -18,7 +18,7 @@
 		C144E1BF29893D5E009DC614 /* NoticeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C144E1BE29893D5E009DC614 /* NoticeCell.swift */; };
 		C144E1C1298A8408009DC614 /* HomeViewmodel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C144E1C0298A8408009DC614 /* HomeViewmodel.swift */; };
 		C144E1C3298B70ED009DC614 /* HomeHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C144E1C2298B70ED009DC614 /* HomeHeaderView.swift */; };
-		C144E1C5298B8505009DC614 /* HomeDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C144E1C4298B8505009DC614 /* HomeDTO.swift */; };
+		C144E1C5298B8505009DC614 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C144E1C4298B8505009DC614 /* User.swift */; };
 		C144E1C7298B9E5D009DC614 /* PersonRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C144E1C6298B9E5D009DC614 /* PersonRepository.swift */; };
 		C144E1CB298E3E16009DC614 /* AdminInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C144E1CA298E3E16009DC614 /* AdminInfoViewController.swift */; };
 		C144E1D02990BC88009DC614 /* FunctionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C144E1CF2990BC88009DC614 /* FunctionCell.swift */; };
@@ -30,6 +30,7 @@
 		C17D91BB299A59110061525E /* KeyPadCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C17D91BA299A59110061525E /* KeyPadCell.swift */; };
 		C17D91BF299B519A0061525E /* BannerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C17D91BE299B519A0061525E /* BannerCell.swift */; };
 		C17D91C1299B936D0061525E /* PassCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C17D91C0299B936D0061525E /* PassCodeView.swift */; };
+		C17D91C3299F287A0061525E /* DBHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C17D91C2299F287A0061525E /* DBHelper.swift */; };
 		C1F1B00B297696A400B4A233 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F1B00A297696A400B4A233 /* AppDelegate.swift */; };
 		C1F1B00D297696A400B4A233 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F1B00C297696A400B4A233 /* SceneDelegate.swift */; };
 		C1F1B00F297696A400B4A233 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F1B00E297696A400B4A233 /* HomeViewController.swift */; };
@@ -50,7 +51,7 @@
 		C144E1BE29893D5E009DC614 /* NoticeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeCell.swift; sourceTree = "<group>"; };
 		C144E1C0298A8408009DC614 /* HomeViewmodel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewmodel.swift; sourceTree = "<group>"; };
 		C144E1C2298B70ED009DC614 /* HomeHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHeaderView.swift; sourceTree = "<group>"; };
-		C144E1C4298B8505009DC614 /* HomeDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDTO.swift; sourceTree = "<group>"; };
+		C144E1C4298B8505009DC614 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		C144E1C6298B9E5D009DC614 /* PersonRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonRepository.swift; sourceTree = "<group>"; };
 		C144E1CA298E3E16009DC614 /* AdminInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminInfoViewController.swift; sourceTree = "<group>"; };
 		C144E1CF2990BC88009DC614 /* FunctionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunctionCell.swift; sourceTree = "<group>"; };
@@ -62,6 +63,7 @@
 		C17D91BA299A59110061525E /* KeyPadCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyPadCell.swift; sourceTree = "<group>"; };
 		C17D91BE299B519A0061525E /* BannerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerCell.swift; sourceTree = "<group>"; };
 		C17D91C0299B936D0061525E /* PassCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassCodeView.swift; sourceTree = "<group>"; };
+		C17D91C2299F287A0061525E /* DBHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBHelper.swift; sourceTree = "<group>"; };
 		C1F1B007297696A400B4A233 /* Commad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Commad.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1F1B00A297696A400B4A233 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C1F1B00C297696A400B4A233 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -179,7 +181,7 @@
 		C174F21D2976BB2800E94547 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
-				C144E1C4298B8505009DC614 /* HomeDTO.swift */,
+				C144E1C4298B8505009DC614 /* User.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -312,6 +314,7 @@
 				C174F2232976BB6F00E94547 /* PersistentStorages */,
 				C174F2222976BB6900E94547 /* Network */,
 				C174F2212976BB5F00E94547 /* Repositories */,
+				C17D91C2299F287A0061525E /* DBHelper.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -476,10 +479,11 @@
 				C1F1B00B297696A400B4A233 /* AppDelegate.swift in Sources */,
 				C17D91BB299A59110061525E /* KeyPadCell.swift in Sources */,
 				C144E1B22980F64E009DC614 /* MainStateCell.swift in Sources */,
+				C17D91C3299F287A0061525E /* DBHelper.swift in Sources */,
 				C144E1BF29893D5E009DC614 /* NoticeCell.swift in Sources */,
 				C144E1C3298B70ED009DC614 /* HomeHeaderView.swift in Sources */,
 				C149FFF8298009AC00A11083 /* TabBarController.swift in Sources */,
-				C144E1C5298B8505009DC614 /* HomeDTO.swift in Sources */,
+				C144E1C5298B8505009DC614 /* User.swift in Sources */,
 				C144E1B02980E78C009DC614 /* CalculatorView.swift in Sources */,
 				C149FFFB298013F600A11083 /* UIColor+Extensions.swift in Sources */,
 				C1F1B00D297696A400B4A233 /* SceneDelegate.swift in Sources */,
