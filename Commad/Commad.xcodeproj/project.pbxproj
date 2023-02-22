@@ -31,6 +31,7 @@
 		C17D91BF299B519A0061525E /* BannerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C17D91BE299B519A0061525E /* BannerCell.swift */; };
 		C17D91C1299B936D0061525E /* PassCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C17D91C0299B936D0061525E /* PassCodeView.swift */; };
 		C17D91C3299F287A0061525E /* DBHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C17D91C2299F287A0061525E /* DBHelper.swift */; };
+		C17D91C529A5DC170061525E /* UILabel+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C17D91C429A5DC170061525E /* UILabel+Extensions.swift */; };
 		C1F1B00B297696A400B4A233 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F1B00A297696A400B4A233 /* AppDelegate.swift */; };
 		C1F1B00D297696A400B4A233 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F1B00C297696A400B4A233 /* SceneDelegate.swift */; };
 		C1F1B00F297696A400B4A233 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F1B00E297696A400B4A233 /* HomeViewController.swift */; };
@@ -64,6 +65,7 @@
 		C17D91BE299B519A0061525E /* BannerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerCell.swift; sourceTree = "<group>"; };
 		C17D91C0299B936D0061525E /* PassCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassCodeView.swift; sourceTree = "<group>"; };
 		C17D91C2299F287A0061525E /* DBHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBHelper.swift; sourceTree = "<group>"; };
+		C17D91C429A5DC170061525E /* UILabel+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extensions.swift"; sourceTree = "<group>"; };
 		C1F1B007297696A400B4A233 /* Commad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Commad.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1F1B00A297696A400B4A233 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C1F1B00C297696A400B4A233 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -174,6 +176,7 @@
 			children = (
 				C149FFFA298013F600A11083 /* UIColor+Extensions.swift */,
 				C144E1B62987BD0B009DC614 /* UIView+Extensions.swift */,
+				C17D91C429A5DC170061525E /* UILabel+Extensions.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -478,6 +481,7 @@
 				C144E1B72987BD0B009DC614 /* UIView+Extensions.swift in Sources */,
 				C1F1B00B297696A400B4A233 /* AppDelegate.swift in Sources */,
 				C17D91BB299A59110061525E /* KeyPadCell.swift in Sources */,
+				C17D91C529A5DC170061525E /* UILabel+Extensions.swift in Sources */,
 				C144E1B22980F64E009DC614 /* MainStateCell.swift in Sources */,
 				C17D91C3299F287A0061525E /* DBHelper.swift in Sources */,
 				C144E1BF29893D5E009DC614 /* NoticeCell.swift in Sources */,

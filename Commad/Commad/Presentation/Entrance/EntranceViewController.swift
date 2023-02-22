@@ -11,24 +11,8 @@ import UIKit
 class EntranceViewController: UIViewController {
     
     
-    private let passcodeLabel: UILabel = {
-        var code = UILabel()
-        code.frame = CGRect(origin: .zero, size: .zero)
-        code.textAlignment = .center
-        code.font = .boldSystemFont(ofSize: 38)
-        code.textColor = .white
-        code.text = "2"
-        return code
-    }()
+    var passCodeView: PassCodeView = PassCodeView()
     
-    private var passCodeStackView: UIStackView = {
-        var stackView = UIStackView()
-        stackView.axis = .horizontal
-        stackView.alignment = .fill
-        stackView.distribution = .equalSpacing
-        stackView.spacing = 8
-        return stackView
-    }()
     
     private let historyView: UIView = {
         var view = UIView()
@@ -41,7 +25,7 @@ class EntranceViewController: UIViewController {
     
     private let historyLabel: UILabel = {
         var label = UILabel()
-        label.text = "오늘"
+        label.text = "2022/02/22"
         label.font = .boldSystemFont(ofSize: 15)
         label.textColor = .white
         return label
@@ -64,7 +48,8 @@ class EntranceViewController: UIViewController {
     private let enterButton: UIButton = {
         var button = UIButton()
         button.backgroundColor = .blue
-        button.setTitle("Entrance", for: .normal)
+        button.setTitle("등록", for: .normal)
+        button.titleLabel?.font = .boldSystemFont(ofSize: 20)
         button.layer.cornerRadius = 10
         button.clipsToBounds = true
         return button
@@ -84,14 +69,14 @@ extension EntranceViewController {
     override func viewDidLayoutSubviews() {
         self.view.backgroundColor = .black
         
-        self.view.addSubview(passcodeLabel)
+        self.view.addSubview(passCodeView)
         self.view.addSubview(historyView)
         self.view.addSubview(historyLabel)
         self.view.addSubview(keyPadCollectionView)
         self.view.addSubview(enterButton)
         
 
-        passcodeLabel.snp.makeConstraints { make in
+        passCodeView.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide).offset(50)
             make.leading.equalToSuperview().offset(30)
             make.trailing.equalToSuperview().inset(30)
@@ -99,7 +84,7 @@ extension EntranceViewController {
         }
         
         historyView.snp.makeConstraints { make in
-            make.top.equalTo(passcodeLabel.snp.bottom).offset(100)
+            make.top.equalTo(passCodeView.snp.bottom).offset(100)
             make.leading.equalToSuperview().offset(40)
             make.trailing.equalToSuperview().inset(40)
             make.height.equalTo(50)
@@ -140,7 +125,17 @@ extension EntranceViewController: UICollectionViewDelegate, UICollectionViewData
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.passcodeLabel.text = "\(indexPath.item+1)"
+        
+        if indexPath.item == 9 {
+//            self.passCodeView.clearCode()
+        } else if indexPath.item == 11 {
+//            self.passCodeView.deleteCode()
+        } else if indexPath.item == 10 {
+            self.passCodeView.insertCode(num: 0)
+        } else {
+            self.passCodeView.insertCode(num: indexPath.item+1)
+        }
+    
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
