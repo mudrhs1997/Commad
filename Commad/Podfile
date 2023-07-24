@@ -6,12 +6,13 @@ target 'Commad' do
   use_frameworks!
 
   # Pods for Commad
+  
+  # SwiftLint
+  pod 'SwiftLint'
 
   # RxSwift
-  pod 'RxSwift', '6.5.0'
-
-  # SnapKit
-  pod 'SnapKit'
+  pod 'RxSwift'
+  pod 'RxCocoa'
 
 
 end
