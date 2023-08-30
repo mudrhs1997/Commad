@@ -14,6 +14,8 @@ class MainMemberTableViewCell: UITableViewCell {
         var view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.frame = CGRect(origin: .zero, size: .zero)
+        view.backgroundColor = .lightGray
+        view.layer.cornerRadius = 10
         return view
     }()
     
@@ -21,7 +23,6 @@ class MainMemberTableViewCell: UITableViewCell {
         var label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.frame = CGRect(origin: .zero, size: .zero)
-        label.textColor = .yellow
         return label
     }()
     
@@ -42,17 +43,16 @@ extension MainMemberTableViewCell {
         
         self.addSubview(memberFrame)
         
-        memberFrame.backgroundColor = .blue
-        memberFrame.topAnchor.constraint(equalTo: self.topAnchor, constant: 10).isActive = true
-        memberFrame.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10).isActive = true
-        memberFrame.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10).isActive = true
-        memberFrame.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -10).isActive = true
-        memberFrame.heightAnchor.constraint(equalToConstant: 120).isActive = true
-        memberFrame.layer.cornerRadius = 10
+        memberFrame.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(10)
+            make.leading.equalToSuperview().offset(20)
+            make.trailing.equalToSuperview().offset(-20)
+            make.bottom.equalToSuperview().offset(-10)
+        }
         
         self.addSubview(name)
         
         name.centerYAnchor.constraint(equalTo: memberFrame.centerYAnchor).isActive = true
-        name.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20).isActive = true
+        name.leadingAnchor.constraint(equalTo: memberFrame.leadingAnchor, constant: 20).isActive = true
     }
 }

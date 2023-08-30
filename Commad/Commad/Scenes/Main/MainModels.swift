@@ -15,13 +15,13 @@ enum MainModels {
         }
         
         struct Response {
-            var users: [User]?
+            var users: [Member]?
             var isError: Bool
             var message: String?
         }
         
         struct ViewModel {
-            var users: [User]
+            var users: [Member]
         }
     }
 }

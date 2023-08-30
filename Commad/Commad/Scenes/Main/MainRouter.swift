@@ -20,9 +20,9 @@ class MainRouter: NSObject, MainRoutingLogic, MainDataPassing {
     var dataStore: MainDataStore?
     
     func routeToDetail() {
-        let detailViewContorller = MemberDetailViewController()
+        let memberViewContorller = MemberViewController()
         
-        viewController?.navigationController?.pushViewController(detailViewContorller, animated: true)
+        viewController?.navigationController?.pushViewController(memberViewContorller, animated: true)
     }
     
 }
