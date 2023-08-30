@@ -8,7 +8,7 @@
 import Foundation
 
 protocol MainDataStore {
-    var users: [User]? { get set }
+    var users: [Member]? { get set }
 }
 
 protocol MainBusinessLogic {
@@ -18,12 +18,12 @@ protocol MainBusinessLogic {
 class MainInteractor: MainBusinessLogic, MainDataStore {
     
     var presenter: MainPresentationLogic?
-    var worker: MainUserWorker?
+    var worker: MainWorker?
     
-    var users: [User]?
+    var users: [Member]?
     
     func fetchUsers(request: MainModels.Member.Request) {
-        worker = MainUserWorker()
+        worker = MainWorker()
         worker?.fetchUser(offset: request.count) { response in
             self.presenter?.presentationMember(response: MainModels.Member.Response(users: response.users, isError: false, message: "Fields may not be empty."))
         }

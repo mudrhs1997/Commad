@@ -15,9 +15,9 @@ enum APIError: Error {
 class APIService {
     let session = URLSession(configuration: .default)
     
-    func fetchUserData(offset: Int, completion: @escaping (Result<[User], APIError>) -> Void) {
+    func fetchAllMember(completion: @escaping (Result<[Member], APIError>) -> Void) {
         
-        guard let url = URL(string: "https://random-data-api.com/api/v2/users?size=\(offset)") else { return }
+        guard let url = URL(string: "https://random-data-api.com/api/v2/users?size=8") else { return }
         
         session.dataTask(with: url) { data, response, error in
             
@@ -25,11 +25,11 @@ class APIService {
                 return completion(.failure(.data))
             }
             
-            guard let user = try? JSONDecoder().decode([User].self, from: data) else {
+            guard let members = try? JSONDecoder().decode([Member].self, from: data) else {
                 return completion(.failure(.decodingJSON))
             }
             
-            completion(.success(user))
+            completion(.success(members))
             
         }.resume()
     }

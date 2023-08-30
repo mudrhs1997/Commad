@@ -9,7 +9,7 @@ import UIKit
 
 class MainMemberListCollectionViewCell: UICollectionViewCell {
     static let identifier = "MainMemberListCollectionViewCell"
-    var members: [User]?
+    var members: [Member]?
     
     private let tableView: UITableView = {
         var tableView = UITableView()
@@ -30,7 +30,7 @@ class MainMemberListCollectionViewCell: UICollectionViewCell {
         self.setupView()
     }
     
-    func fetchUser(users: [User]?) {
+    func fetchUser(users: [Member]?) {
         self.members = users
         tableView.reloadData()
     }
@@ -53,6 +53,10 @@ extension MainMemberListCollectionViewCell {
 extension MainMemberListCollectionViewCell: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.members?.count ?? 0
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 120
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

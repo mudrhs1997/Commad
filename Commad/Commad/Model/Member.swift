@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct User: Codable {
+struct Member: Codable {
     let id: Int
     let uid: String
     let password: String

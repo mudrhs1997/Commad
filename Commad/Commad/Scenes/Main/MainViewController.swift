@@ -7,31 +7,17 @@
 
 import UIKit
 import SwiftUI
+import SnapKit
 
 protocol MainDisplayLogic: AnyObject {
     func displaySomething(viewModel: MainModels.Member.ViewModel)
-}
-
-enum MainSection: Int, CaseIterable {
-    
-    case Header
-    case MemberList
-    
-    var description: String {
-        switch self {
-        case .Header:
-            return "메인"
-        case .MemberList:
-            return "멤버"
-        }
-    }
 }
 
 class MainViewController: UIViewController {
     var interactor: (MainBusinessLogic & MainDataStore)?
     var router: MainRoutingLogic?
     
-    var members: [User]?
+    var members: [Member]?
     
     private let header: MainHeaderView = {
         let header = MainHeaderView()
@@ -101,7 +87,7 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .link
+        view.backgroundColor = .white
         setupView()
         MainCollectionView.delegate = self
         MainCollectionView.dataSource = self
@@ -113,7 +99,7 @@ class MainViewController: UIViewController {
 extension MainViewController: MainDisplayLogic {
     func displaySomething(viewModel: MainModels.Member.ViewModel) {
         DispatchQueue.main.async {
-            self.members = viewModel.users
+//            self.members = viewModel.users
             self.MainCollectionView.reloadData()
         }
     }
@@ -121,12 +107,16 @@ extension MainViewController: MainDisplayLogic {
 
 extension MainViewController {
     private func setupView() {
-        self.view.addSubview(header)
         
-        header.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
-        header.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
-        header.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
-        header.heightAnchor.constraint(equalToConstant: 200).isActive = true
+        self.view.addSubview(header)
+        header.snp.makeConstraints { make in
+            make.top.equalToSuperview()
+            make.leading.equalToSuperview()
+            make.trailing.equalToSuperview()
+            make.height.equalTo(250)
+        }
+        
+        header.memberButton.addTarget(self, action: #selector(showMemberList), for: .touchUpInside)
         
         self.view.addSubview(MainCollectionView)
 
@@ -136,8 +126,8 @@ extension MainViewController {
         MainCollectionView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: 0).isActive = true
     }
     
-    @objc private func fetchData() {
-        interactor?.fetchUsers(request: MainModels.Member.Request(count: 3))
+    @objc private func showMemberList() {
+        router?.routeToDetail()
     }
 }
 
@@ -149,13 +139,15 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
             let modifiedTopHeight = header.maxHeight - originY
             let height = min(max(modifiedTopHeight, header.minHeight), header.maxHeight)
             
-            header.heightAnchor.constraint(equalToConstant: height).isActive = true
-            self.view.layoutIfNeeded()
+            header.snp.updateConstraints { make in
+                make.height.equalTo(height)
+                
+            }
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1
+        return 8
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -164,7 +156,6 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
         cell.fetchUser(users: self.members)
         
         return cell
-        
     }
     
 }
