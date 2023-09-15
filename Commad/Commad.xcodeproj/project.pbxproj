@@ -22,6 +22,7 @@
 		C12FCD212A79155800172D65 /* MemberModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12FCD202A79155800172D65 /* MemberModels.swift */; };
 		C12FCD232A79156800172D65 /* MemberRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12FCD222A79156800172D65 /* MemberRouter.swift */; };
 		C12FCD252A7915B900172D65 /* MemberWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12FCD242A7915B900172D65 /* MemberWorker.swift */; };
+		C14038842AB3071600933273 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C14038832AB3071500933273 /* NetworkService.swift */; };
 		C148F27D2A8F6232006AD2C3 /* MemberProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C148F27C2A8F6232006AD2C3 /* MemberProfileCell.swift */; };
 		C14AC0752A541E60003CBBC9 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C14AC0742A541E60003CBBC9 /* APIService.swift */; };
 		C14AC0782A56B6A7003CBBC9 /* MainMemberTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C14AC0772A56B6A7003CBBC9 /* MainMemberTableViewCell.swift */; };
@@ -53,6 +54,7 @@
 		C12FCD202A79155800172D65 /* MemberModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberModels.swift; sourceTree = "<group>"; };
 		C12FCD222A79156800172D65 /* MemberRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberRouter.swift; sourceTree = "<group>"; };
 		C12FCD242A7915B900172D65 /* MemberWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberWorker.swift; sourceTree = "<group>"; };
+		C14038832AB3071500933273 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		C148F27C2A8F6232006AD2C3 /* MemberProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberProfileCell.swift; sourceTree = "<group>"; };
 		C14AC0742A541E60003CBBC9 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		C14AC0762A54F9E0003CBBC9 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
@@ -122,6 +124,14 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		C14038822AB3062700933273 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				C14038832AB3071500933273 /* NetworkService.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
 		C148F27B2A8E3AD7006AD2C3 /* Component */ = {
 			isa = PBXGroup;
 			children = (
@@ -184,6 +194,7 @@
 			isa = PBXGroup;
 			children = (
 				C1F1B01E2976A3B600B4A233 /* Application */,
+				C14038822AB3062700933273 /* Network */,
 				C12E848F2A46B4FD00E85D7C /* Utility */,
 				C14AC0732A541E4B003CBBC9 /* Service */,
 				C12E849E2A5408BB00E85D7C /* Model */,
@@ -378,6 +389,7 @@
 			files = (
 				C1F1B00F297696A400B4A233 /* MainViewController.swift in Sources */,
 				C12E84952A53D89600E85D7C /* MainPresenter.swift in Sources */,
+				C14038842AB3071600933273 /* NetworkService.swift in Sources */,
 				C12E84932A53D87000E85D7C /* MainInteractor.swift in Sources */,
 				C12E849D2A54079800E85D7C /* Member.swift in Sources */,
 				C1F4D9522A8B8FF600174582 /* MemberDetailViewController.swift in Sources */,

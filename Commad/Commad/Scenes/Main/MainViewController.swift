@@ -10,7 +10,7 @@ import SwiftUI
 import SnapKit
 
 protocol MainDisplayLogic: AnyObject {
-    func displaySomething(viewModel: MainModels.Member.ViewModel)
+    func displaySomething(viewModel: MainModels.Members.ViewModel)
 }
 
 class MainViewController: UIViewController {
@@ -60,7 +60,7 @@ class MainViewController: UIViewController {
     init() {
         super.init(nibName: nil, bundle: nil)
         setup()
-        interactor?.fetchUsers(request: MainModels.Member.Request(count: 2))
+        interactor?.fetchUsers(request: MainModels.Members.Request(count: 2))
     }
     
     required init?(coder: NSCoder) {
@@ -97,9 +97,9 @@ class MainViewController: UIViewController {
 }
 
 extension MainViewController: MainDisplayLogic {
-    func displaySomething(viewModel: MainModels.Member.ViewModel) {
+    func displaySomething(viewModel: MainModels.Members.ViewModel) {
         DispatchQueue.main.async {
-//            self.members = viewModel.users
+            self.members = viewModel.members
             self.MainCollectionView.reloadData()
         }
     }

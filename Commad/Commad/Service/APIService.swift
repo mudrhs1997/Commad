@@ -17,7 +17,7 @@ class APIService {
     
     func fetchAllMember(completion: @escaping (Result<[Member], APIError>) -> Void) {
         
-        guard let url = URL(string: "https://random-data-api.com/api/v2/users?size=8") else { return }
+        guard let url = URL(string: "http://43.201.132.71:8080/user/") else { return }
         
         session.dataTask(with: url) { data, response, error in
             
@@ -34,3 +34,4 @@ class APIService {
         }.resume()
     }
 }
+

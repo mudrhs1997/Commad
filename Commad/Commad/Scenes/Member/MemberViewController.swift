@@ -95,7 +95,7 @@ extension MemberViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: MainMemberTableViewCell.identifier, for: indexPath) as? MainMemberTableViewCell else { return UITableViewCell() }
-        cell.name.text = self.members?[indexPath.row].first_name
+        cell.name.text = self.members?[indexPath.row].name
         return cell
     }
     

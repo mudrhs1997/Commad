@@ -9,19 +9,19 @@ import Foundation
 
 enum MainModels {
     // MARK: Use cases
-    enum Member {
+    enum Members {
         struct Request {
             var count: Int
         }
         
         struct Response {
-            var users: [Member]?
+            var members: [Member]?
             var isError: Bool
             var message: String?
         }
         
         struct ViewModel {
-            var users: [Member]
+            var members: [Member]
         }
     }
 }
