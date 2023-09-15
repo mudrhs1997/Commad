@@ -8,14 +8,14 @@
 import Foundation
 
 protocol MainWorkerLogic {
-    func fetchUser(offset: Int, _ response: @escaping (MainModels.Member.Response) -> Void)
+    func fetchUser(offset: Int, _ response: @escaping (MainModels.Members.Response) -> Void)
 }
 
 class MainWorker: MainWorkerLogic {
     
     let apiManager = APIService()
     
-    func fetchUser(offset: Int, _ response: @escaping (MainModels.Member.Response) -> Void) {
+    func fetchUser(offset: Int, _ response: @escaping (MainModels.Members.Response) -> Void) {
         print("fetchUser")
     }
 }

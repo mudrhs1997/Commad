@@ -60,7 +60,7 @@ extension MemberDetailViewController: UITableViewDelegate, UITableViewDataSource
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: MemberProfileCell.identifier, for: indexPath) as? MemberProfileCell else { return UITableViewCell() }
-        cell.nameLabel.text = self.member?.first_name
+        cell.nameLabel.text = self.member?.name
         cell.onoffButon.backgroundColor = .black
         cell.onoffButon.addTarget(self, action: #selector(toggleButton), for: .touchUpInside)
         return cell

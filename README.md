@@ -11,7 +11,7 @@
 
 ### 📝 Architecture Design Pattern
 
-- Clean Architecture + MVVM
+- VIP
 
 <br>
 
@@ -19,12 +19,13 @@
 
 - Swift
 - SnapKit
+- SwiftLint
 
 <br>
 
 ### 📒 Reference
 
-- Clean Architecture + MVVM  : [https://tech.olx.com/clean-architecture-and-mvvm-on-ios-c9d167d9f5b3](https://tech.olx.com/clean-architecture-and-mvvm-on-ios-c9d167d9f5b3)
+- VIP Pattern: [https://velog.io/@ssionii/Clean-Swift-a.k.a-VIP-%EC%97%90-%EB%8C%80%ED%95%B4-%EC%95%84%EB%9D%BC%EB%B3%B4%EC%9E%90](https://velog.io/@ssionii/Clean-Swift-a.k.a-VIP-%EC%97%90-%EB%8C%80%ED%95%B4-%EC%95%84%EB%9D%BC%EB%B3%B4%EC%9E%90)
 
 <br>
 
