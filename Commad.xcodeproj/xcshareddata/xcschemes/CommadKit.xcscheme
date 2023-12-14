@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "96A56DB1E4DD54C3503F1B6B"
-               BuildableName = "Commad.app"
-               BlueprintName = "Commad"
+               BlueprintIdentifier = "CFCED137B694CDE14B1338C3"
+               BuildableName = "CommadKit.framework"
+               BlueprintName = "CommadKit"
                ReferencedContainer = "container:Commad.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -26,34 +26,18 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-<<<<<<< HEAD
-      shouldUseLaunchSchemeArgsEnv = "YES"
-      disableMainThreadChecker = "YES">
-      <Testables>
-=======
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
          <TestableReference
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "CFA0F95A63101A0EDC26E8BB"
-               BuildableName = "CommadTests.xctest"
-               BlueprintName = "CommadTests"
+               BlueprintIdentifier = "9A7314B8CB0D1BCD43FB0EFB"
+               BuildableName = "CommadKitTests.xctest"
+               BlueprintName = "CommadKitTests"
                ReferencedContainer = "container:Commad.xcodeproj">
             </BuildableReference>
          </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "63681165EF72BC215EC356AD"
-               BuildableName = "CommadUITests.xctest"
-               BlueprintName = "CommadUITests"
-               ReferencedContainer = "container:Commad.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
->>>>>>> origin
       </Testables>
    </TestAction>
    <LaunchAction
@@ -66,16 +50,15 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "96A56DB1E4DD54C3503F1B6B"
-            BuildableName = "Commad.app"
-            BlueprintName = "Commad"
+            BlueprintIdentifier = "CFCED137B694CDE14B1338C3"
+            BuildableName = "CommadKit.framework"
+            BlueprintName = "CommadKit"
             ReferencedContainer = "container:Commad.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
@@ -83,16 +66,15 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "96A56DB1E4DD54C3503F1B6B"
-            BuildableName = "Commad.app"
-            BlueprintName = "Commad"
+            BlueprintIdentifier = "CFCED137B694CDE14B1338C3"
+            BuildableName = "CommadKit.framework"
+            BlueprintName = "CommadKit"
             ReferencedContainer = "container:Commad.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

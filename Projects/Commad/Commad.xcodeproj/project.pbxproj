@@ -3,13 +3,14 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 55;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		009B2D48754126AFC73A2ED6 /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C997A98ACC4F7276C973FE /* EndPoint.swift */; };
-		13A173D339476F788237E318 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF13DA2B24349A845C4F032 /* HomeController.swift */; };
+		0DF79494155339ED277D26FD /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B5E36D4E6BCAEB9B22F6FBC /* HomeController.swift */; };
 		193E9E531A47A29618981504 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0EFEE4C804F81022EDF58809 /* Assets.xcassets */; };
+		1E9FD6DA8FD215E6E3219253 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2CC70A6F53779BF26A6C1B1D /* Info.plist */; };
 		2678B42A094D3602D093F1A8 /* MainPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236FADECB4ABA3990BCD6BB9 /* MainPresenter.swift */; };
 		2F9B9F13D96B4B55B029573C /* MainHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE9D7DC90155A80B6D35D76 /* MainHeaderView.swift */; };
 		310494D9F3E6D03808EF999F /* MemberListRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86E20CA95857759CC4062AC /* MemberListRouter.swift */; };
@@ -17,7 +18,6 @@
 		4CEEA698A04B42425D1F3171 /* MainInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E40D226FABAC2BF5BB90F3 /* MainInteractor.swift */; };
 		4DFB96CF4F3E73BC240BA919 /* MainRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FF24A585FE78587E2FB044 /* MainRouter.swift */; };
 		63F8907A530A800542B29F87 /* Animator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF5E600A879CF54FAA68A7A /* Animator.swift */; };
-		6DAA3D4D2D32F644D2D97278 /* HomeButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6061102A121E87AE93DA9CC /* HomeButtonCell.swift */; };
 		6E81F63A3FD745E59ADE2972 /* MemberListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4D60547955D9401CC00CA2A /* MemberListPresenter.swift */; };
 		7966F4085A01764C8C8E5719 /* HomeHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772F2798F3E0463C7729426D /* HomeHeaderView.swift */; };
 		81B977A1B0FFFC82C3D04029 /* RequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23738C14CF7DF5387C6DCECC /* RequestBuilder.swift */; };
@@ -37,6 +37,7 @@
 		D85554D750D3FA28E852A43B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D73393478D3B93AEA68226 /* AppDelegate.swift */; };
 		D951CE55FB51607D32AC86FD /* PinterestLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E6992A7D0227C14AD1181DF /* PinterestLayout.swift */; };
 		E20644B4668C749A2F1ABB15 /* TuistAssets+Commad.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2AB1A3219D6C7C71B0166A4 /* TuistAssets+Commad.swift */; };
+		E38665BFC605908513887625 /* HomeButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637C019106E746DA32A8248D /* HomeButtonCell.swift */; };
 		EA742DA3C0441B6B465677EA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF053927B872DDFC20534733 /* SceneDelegate.swift */; };
 		EF6A03145E677616858123E2 /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A46963314DC06931879F33D8 /* SnapKit.framework */; };
 		F40BC95DCAE6E33EEA442A2A /* MemberDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1A340B4347155CF1C07CD79 /* MemberDetailController.swift */; };
@@ -69,10 +70,12 @@
 		2F298E4C253BD1042AEF42C2 /* TuistBundle+Commad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TuistBundle+Commad.swift"; sourceTree = "<group>"; };
 		404195779201EDA6EE833E60 /* Commad-release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Commad-release.xcconfig"; sourceTree = "<group>"; };
 		459E7E82C0FE54316B6EB8BA /* MemberListModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberListModels.swift; sourceTree = "<group>"; };
+		4B5E36D4E6BCAEB9B22F6FBC /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
 		57D73393478D3B93AEA68226 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5AD85B9A5F619634B412D4F1 /* MemberListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberListController.swift; sourceTree = "<group>"; };
 		61D616B3F68B21C2FFE0773B /* MemberCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberCell.swift; sourceTree = "<group>"; };
 		62C8F9CBC8894EB2289ED162 /* MemberProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberProfileCell.swift; sourceTree = "<group>"; };
+		637C019106E746DA32A8248D /* HomeButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeButtonCell.swift; sourceTree = "<group>"; };
 		6B4A6BF2EB12271DBC69ED12 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		707947763A5206BB5419328B /* MemberListWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberListWorker.swift; sourceTree = "<group>"; };
 		772F2798F3E0463C7729426D /* HomeHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHeaderView.swift; sourceTree = "<group>"; };
@@ -88,10 +91,8 @@
 		D1A340B4347155CF1C07CD79 /* MemberDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberDetailController.swift; sourceTree = "<group>"; };
 		D4F4C29A46FC525C11E316B9 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		DFF5E600A879CF54FAA68A7A /* Animator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animator.swift; sourceTree = "<group>"; };
-		E6061102A121E87AE93DA9CC /* HomeButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeButtonCell.swift; sourceTree = "<group>"; };
 		E7C997A98ACC4F7276C973FE /* EndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
 		E86E20CA95857759CC4062AC /* MemberListRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberListRouter.swift; sourceTree = "<group>"; };
-		EAF13DA2B24349A845C4F032 /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
 		EC1D22A383C8514A07BDCE37 /* Commad-debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Commad-debug.xcconfig"; sourceTree = "<group>"; };
 		F2AB1A3219D6C7C71B0166A4 /* TuistAssets+Commad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TuistAssets+Commad.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -121,12 +122,12 @@
 			isa = PBXGroup;
 			children = (
 				F90CA359DDB44E2981A02390 /* Component */,
+				4B5E36D4E6BCAEB9B22F6FBC /* HomeController.swift */,
 				772F2798F3E0463C7729426D /* HomeHeaderView.swift */,
 				17E40D226FABAC2BF5BB90F3 /* MainInteractor.swift */,
 				AC8580C9C74B5B52E80859B7 /* MainModels.swift */,
 				236FADECB4ABA3990BCD6BB9 /* MainPresenter.swift */,
 				93FF24A585FE78587E2FB044 /* MainRouter.swift */,
-				EAF13DA2B24349A845C4F032 /* HomeController.swift */,
 				A610D89C476618F5CA4E3C71 /* MainWorker.swift */,
 			);
 			path = Main;
@@ -307,8 +308,8 @@
 		F90CA359DDB44E2981A02390 /* Component */ = {
 			isa = PBXGroup;
 			children = (
+				637C019106E746DA32A8248D /* HomeButtonCell.swift */,
 				0BE9D7DC90155A80B6D35D76 /* MainHeaderView.swift */,
-				E6061102A121E87AE93DA9CC /* HomeButtonCell.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -350,6 +351,8 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
 				ORGANIZATIONNAME = commad;
+				TargetAttributes = {
+				};
 			};
 			buildConfigurationList = C3298B31D55EFD46DE8DF5DE /* Build configuration list for PBXProject "Commad" */;
 			compatibilityVersion = "Xcode 14.0";
@@ -375,6 +378,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				193E9E531A47A29618981504 /* Assets.xcassets in Resources */,
+				1E9FD6DA8FD215E6E3219253 /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -394,14 +398,14 @@
 				009B2D48754126AFC73A2ED6 /* EndPoint.swift in Sources */,
 				4CDA28BD2CAC2C50237E4FB5 /* NetworkService.swift in Sources */,
 				81B977A1B0FFFC82C3D04029 /* RequestBuilder.swift in Sources */,
+				E38665BFC605908513887625 /* HomeButtonCell.swift in Sources */,
 				2F9B9F13D96B4B55B029573C /* MainHeaderView.swift in Sources */,
-				6DAA3D4D2D32F644D2D97278 /* HomeButtonCell.swift in Sources */,
+				0DF79494155339ED277D26FD /* HomeController.swift in Sources */,
 				7966F4085A01764C8C8E5719 /* HomeHeaderView.swift in Sources */,
 				4CEEA698A04B42425D1F3171 /* MainInteractor.swift in Sources */,
 				8B50BE8C6E0AE3F4197931F4 /* MainModels.swift in Sources */,
 				2678B42A094D3602D093F1A8 /* MainPresenter.swift in Sources */,
 				4DFB96CF4F3E73BC240BA919 /* MainRouter.swift in Sources */,
-				13A173D339476F788237E318 /* HomeController.swift in Sources */,
 				BAE97B16643955B6857EEA1A /* MainWorker.swift in Sources */,
 				63F8907A530A800542B29F87 /* Animator.swift in Sources */,
 				A2A2B022D14A31CC01543228 /* MemberCell.swift in Sources */,
