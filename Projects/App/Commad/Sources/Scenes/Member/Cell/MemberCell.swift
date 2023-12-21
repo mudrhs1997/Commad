@@ -36,7 +36,7 @@ class MemberCell: UICollectionViewCell {
     }
     
     func configureCell(name: String) {
-        
+        nameLabel.text = name
     }
     
 }

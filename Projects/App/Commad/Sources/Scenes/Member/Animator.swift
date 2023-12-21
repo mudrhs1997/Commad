@@ -51,7 +51,7 @@ final class Animator: NSObject, UIViewControllerAnimatedTransitioning {
               let window = firstViewController.view.window ?? secondViewController.view.window,
               let cellImageSnapshot = selectedCell.imageView.snapshotView(afterScreenUpdates: true),
               let cellLabelSnapshot = selectedCell.nameLabel.snapshotView(afterScreenUpdates: true),
-              let controllerImageSnapshot = secondViewController.imageView.snapshotView(afterScreenUpdates: true)
+              let controllerImageSnapshot = secondViewController.headerView.imageView.snapshotView(afterScreenUpdates: true)
         else {
             transitionContext.completeTransition(true)
             return
@@ -78,8 +78,8 @@ final class Animator: NSObject, UIViewControllerAnimatedTransitioning {
         
         [backgroundView, selectedCellImageViewSnapshot, controllerImageSnapshot, cellLabelSnapshot].forEach { containerView.addSubview($0) }
         
-        let controllerImageViewRect = secondViewController.imageView.convert(secondViewController.imageView.bounds, to: window)
-        let controllerLabelRect = secondViewController.nameLabel.convert(secondViewController.nameLabel.bounds, to: window)
+        let controllerImageViewRect = secondViewController.headerView.imageView.convert(secondViewController.headerView.imageView.bounds, to: window)
+        let controllerLabelRect = secondViewController.headerView.nameLabel.convert(secondViewController.headerView.nameLabel.bounds, to: window)
         
         [selectedCellImageViewSnapshot, controllerImageSnapshot].forEach { snapshot in
             snapshot.frame = isPresenting ? cellImageViewRect : controllerImageViewRect

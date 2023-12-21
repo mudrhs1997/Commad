@@ -12,7 +12,7 @@ protocol MemberListDataStore {
 }
 
 protocol MemberListBusinessLogic {
-    func fecthMembers(requese: MemberListModels.Members.Request)
+    func fecthMembers(request: MemberListModels.Members.Request)
 }
 
 final class MemberListInteractor: MemberListDataStore, MemberListBusinessLogic {
@@ -22,7 +22,7 @@ final class MemberListInteractor: MemberListDataStore, MemberListBusinessLogic {
     
     var members: [Member]?
     
-    func fecthMembers(requese: MemberListModels.Members.Request) {
+    func fecthMembers(request: MemberListModels.Members.Request) {
         worker = MemberListWorker()
         worker?.fetchMember({ response in
             self.presenter?.presentationMember(response: MemberListModels.Members.Response(members: response.members, isError: false, message: "Fields may not be empty."))

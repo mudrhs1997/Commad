@@ -9,11 +9,11 @@
 import Foundation
 
 enum Endpoint {
-    case userList
+    case memberList
     
     var endpoint: String {
         switch self {
-        case .userList: return "/user/list"
+        case .memberList: return "/member/info"
         }
     }
 }

@@ -44,7 +44,6 @@ class HomeController: UIViewController {
     init() {
         super.init(nibName: nil, bundle: nil)
         setup()
-        interactor?.fetchUsers(request: MainModels.Members.Request(count: 2))
     }
     
     required init?(coder: NSCoder) {
@@ -110,11 +109,21 @@ extension HomeController: UICollectionViewDelegate, UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-       
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeButtonCell.identifier, for: indexPath) as? HomeButtonCell else { return UICollectionViewCell() }
-        
         cell.configureCell(title: MainModels.Title.allCases[indexPath.row].rawValue)
+        
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        switch MainModels.Title.allCases[indexPath.row] {
+        case .enter:
+            navigationController?.pushViewController(MemberListController(), animated: true)
+        case .notice:
+            print("notice")
+        case .manage:
+            print("manage")
+        }
     }
     
 }

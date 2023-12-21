@@ -8,8 +8,6 @@
 import UIKit
 
 final class MainHeaderView: UIView {
-    let maxHeight: CGFloat = 350
-    let minHeight: CGFloat = 180
     
     private let headerImage: UIImageView = {
         let image = UIImageView()

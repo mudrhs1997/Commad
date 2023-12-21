@@ -7,101 +7,140 @@
 
 import UIKit
 
-class MemberDetailController: UIViewController {
+final class MemberDetailController: UIViewController {
+    enum Section: Int {
+        case month
+        case day
+    }
     
-    var imageName: String?
+    struct Item: Hashable {
+        let data: Any
+        let identifier: UUID
+        
+        init(data: Any, identifier: UUID = UUID()) {
+            self.data = data
+            self.identifier = identifier
+        }
+
+        func hash(into hasher: inout Hasher) {
+            hasher.combine(self.identifier)
+        }
+
+        static func == (lhs: Item, rhs: Item) -> Bool {
+            lhs.identifier == rhs.identifier
+        }
+    }
     
-    let imageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFill
-        imageView.tintColor = .black
-        imageView.clipsToBounds = true
-        return imageView
-    }()
+    typealias DataSource = UICollectionViewDiffableDataSource<Section, Item>
+    typealias Snapshot = NSDiffableDataSourceSnapshot<Section, Item>
     
-    let nameLabel: UILabel = {
-        var label = UILabel()
-        label.text = "정명곤"
-        label.tintColor = .black
-        label.font = .systemFont(ofSize: 36)
-        return label
-    }()
+    private lazy var dataSource: DataSource = configureDataSource()
+    private lazy var snapshot: Snapshot = Snapshot()
     
-    let exitButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("입장하기", for: .normal)
-        button.backgroundColor = .link
-        button.layer.cornerRadius = 18
-        return button
-    }()
+    private var member: Member?
+    
+    let headerView = MemberDetailHeader()
     
     private let collectionView: UICollectionView = {
-        let layout = UICollectionViewCompositionalLayout { (section, _ ) -> NSCollectionLayoutSection? in
-            let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(250))
-            let item = NSCollectionLayoutItem(layoutSize: itemSize)
-            
-            let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(250))
-            let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
-            
-            let section = NSCollectionLayoutSection(group: group)
-            section.orthogonalScrollingBehavior = .none
-            section.contentInsets = .init(top: 50, leading: 16, bottom: 0, trailing: 16)
-            
-            return section
+        let layout = UICollectionViewCompositionalLayout { section, _ in
+            return Layouts.History.allCases[section].section()
         }
         
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
-        
-        collectionView.register(HomeButtonCell.self, forCellWithReuseIdentifier: HomeButtonCell.identifier)
+        let collectionView = UICollectionView(frame: CGRect(origin: .zero, size: .zero), collectionViewLayout: layout)
+        collectionView.showsVerticalScrollIndicator = false
         
         return collectionView
     }()
-
+    
+    init(member: Member?) {
+        super.init(nibName: nil, bundle: nil)
+        self.member = member
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
-        collectionView.dataSource = self
+        collectionView.dataSource = dataSource
         collectionView.delegate = self
         registerCell()
         setupView()
-        imageView.image = UIImage(named: imageName!)
+        snapshot.appendSections([.month, .day])
+        snapshot.appendItems([Item(data: "")], toSection: .month)
+        snapshot.appendItems([Item(data: "")], toSection: .day)
+        snapshot.appendItems([Item(data: "")], toSection: .month)
+        snapshot.appendItems([Item(data: "")], toSection: .day)
+        snapshot.appendItems([Item(data: "")], toSection: .month)
+        snapshot.appendItems([Item(data: "")], toSection: .day)
+        snapshot.appendItems([Item(data: "")], toSection: .month)
+        snapshot.appendItems([Item(data: "")], toSection: .day)
+        snapshot.appendItems([Item(data: "")], toSection: .month)
+        snapshot.appendItems([Item(data: "")], toSection: .day)
+        snapshot.appendItems([Item(data: "")], toSection: .month)
+        snapshot.appendItems([Item(data: "")], toSection: .day)
+        self.dataSource.apply(self.snapshot)
     }
     
     private func registerCell() {
-//        collectionView.register(MemberProfileCell.self, forCellWithReuseIdentifier: MemberProfileCell.identifier)
+        collectionView.register(CollectionViewHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: CollectionViewHeader.identifier)
+        collectionView.register(MemberHistoryCell.self, forCellWithReuseIdentifier: MemberHistoryCell.identifier)
+    }
+    
+    private func configureDataSource() -> DataSource {
+        let dataSource = DataSource(collectionView: self.collectionView) { collectionView, indexPath, item in
+            guard let section = Section(rawValue: indexPath.section) else { return UICollectionViewCell() }
+            switch section {
+            case .month:
+                guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MemberHistoryCell.identifier, for: indexPath) as? MemberHistoryCell else { return UICollectionViewCell() }
+                cell.configureCell(day: Int.random(in: 1...31))
+                return cell
+                
+            case .day:
+                guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MemberHistoryCell.identifier, for: indexPath) as? MemberHistoryCell else { return UICollectionViewCell() }
+                cell.configureCell(day: 999)
+                return cell
+            }
+        }
+        
+        configureHeader(of: dataSource)
+        return dataSource
+    }
+    
+    private func configureHeader(of dataSource: DataSource) {
+        dataSource.supplementaryViewProvider = { collectionView, kind, indexPath in
+            let section = self.dataSource.snapshot().sectionIdentifiers[indexPath.section]
+            let view = collectionView.dequeueReusableSupplementaryView(ofKind: kind,
+                                                                       withReuseIdentifier: CollectionViewHeader.identifier,
+                                                                       for: indexPath) as? CollectionViewHeader
+            switch section {
+            case .month:
+                view?.configureCell(title: "12월")
+            case .day:
+                view?.configureCell(title: "11월")
+            }
+            
+            return view
+        }
     }
 
 }
 
 extension MemberDetailController {
     private func setupView() {
-        
-        self.view.addSubview(imageView)
-        imageView.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide)
-            make.leading.trailing.equalToSuperview()
-            make.height.equalTo(200)
+        view.addSubview(headerView)
+        headerView.exitButton.addTarget(self, action: #selector(toggleButton), for: .touchUpInside)
+        headerView.nameLabel.text = member?.name
+        headerView.snp.makeConstraints { make in
+            make.top.leading.trailing.equalTo(view.safeAreaLayoutGuide)
+            make.height.equalTo(350)
         }
         
-        self.view.addSubview(nameLabel)
-        nameLabel.snp.makeConstraints { make in
-            make.top.equalTo(imageView.snp.top)
-            make.leading.equalToSuperview().offset(15)
-        }
-        
-        self.view.addSubview(exitButton)
-        exitButton.addTarget(self, action: #selector(toggleButton), for: .touchUpInside)
-        exitButton.snp.makeConstraints { make in
-            make.top.equalTo(imageView.snp.bottom)
-            make.leading.trailing.equalToSuperview()
-            make.height.equalTo(50)
-        }
-        
-        self.view.addSubview(collectionView)
+        view.addSubview(collectionView)
         collectionView.snp.makeConstraints { make in
-            make.top.equalTo(exitButton.snp.bottom)
+            make.top.equalTo(headerView.snp.bottom)
             make.leading.equalToSuperview()
             make.trailing.equalToSuperview()
             make.bottom.equalToSuperview()
@@ -114,26 +153,24 @@ extension MemberDetailController {
     }
 }
 
-extension MemberDetailController: UICollectionViewDelegate, UICollectionViewDataSource {
-    
+extension MemberDetailController: UICollectionViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if scrollView == self.collectionView {
             let originY: CGFloat = scrollView.contentOffset.y
-            let modifiedTopHeight = 1 / originY
+            let modifiedTopHeight = headerView.maxHeight - originY
+            let height = min(max(modifiedTopHeight, headerView.minHeight), headerView.maxHeight)
+            
+            headerView.snp.updateConstraints { make in
+                make.height.equalTo(height)
+            }
+            
+            self.view.layoutIfNeeded()
             
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 8
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-       
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeButtonCell.identifier, for: indexPath) as? HomeButtonCell else { return UICollectionViewCell() }
-//        cell.fetchUser(users: self.members)
-        
-        return cell
+        return 20
     }
     
 }

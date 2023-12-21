@@ -20,10 +20,9 @@ final class MemberListRouter: NSObject, MemberListRoutingLogic, MemberListDataPa
     var dataStore: MemberListDataStore?
     
     func routeToDetail(member: Member?) {
-        let vc = MemberDetailController()
-        
-        viewController?.navigationController?.pushViewController(vc, animated: true)
-//        viewController?.present(vc, animated: true)
-        
+        let detailViewController = MemberDetailController(member: member)
+        detailViewController.transitioningDelegate = viewController
+        detailViewController.modalPresentationStyle = .fullScreen
+        viewController?.present(detailViewController, animated: true)
     }
 }

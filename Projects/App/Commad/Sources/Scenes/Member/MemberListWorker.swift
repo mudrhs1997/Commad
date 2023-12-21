@@ -18,7 +18,7 @@ class MemberListWorker: MemberListWorkerLogic {
     private var cancellables = Set<AnyCancellable>()
     
     func fetchMember(_ response: @escaping (MemberListModels.Members.Response) -> Void) {
-        apiManager.fetchAllMember().sink { result in
+        apiManager.fetchMembers().sink { result in
             switch result {
             case .finished:
                 print("Fetch Member List Decoding Error")

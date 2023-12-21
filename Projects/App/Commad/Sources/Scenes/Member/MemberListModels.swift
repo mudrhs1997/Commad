@@ -11,7 +11,6 @@ enum MemberListModels {
     // MARK: Use cases
     enum Members {
         struct Request {
-            var count: Int
         }
         
         struct Response {

@@ -15,8 +15,8 @@ enum APIError: Error {
 
 class APIService {
     
-    func fetchAllMember() -> AnyPublisher<[Member], Error> {
-        return NetworkService.shared.get(to: .userList)
+    func fetchMembers() -> AnyPublisher<[Member], Error> {
+        return NetworkService.shared.get(to: .memberList)
             .tryMap { data, response in
                 print(String(data: data, encoding: .utf8))
                 guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else {

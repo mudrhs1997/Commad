@@ -19,17 +19,7 @@ final class MemberListController: UIViewController {
     var selectedCellImageViewSnapshot: UIView?
     var animator: Animator?
 
-    var members: [CGSize] = [CGSize(width: 100, height: 150),
-                             CGSize(width: 100, height: 180),
-                             CGSize(width: 100, height: 130),
-                             CGSize(width: 100, height: 170),
-                             CGSize(width: 100, height: 150),
-                             CGSize(width: 100, height: 180),
-                             CGSize(width: 100, height: 130),
-                             CGSize(width: 100, height: 170),
-                             CGSize(width: 100, height: 150),
-                             CGSize(width: 100, height: 180),
-                             CGSize(width: 100, height: 130)]
+    var members: [Member]?
     
     private let collectionView: UICollectionView = {
         let flowLayout = PinterestLayout()
@@ -57,12 +47,12 @@ final class MemberListController: UIViewController {
         view.backgroundColor = .lightGray
         collectionView.dataSource = self
         collectionView.delegate = self
-        interactor?.fecthMembers(requese: MemberListModels.Members.Request(count: 8))
         setupView()
         registerCell()
         if let layout = collectionView.collectionViewLayout as? PinterestLayout {
             layout.delegate = self
         }
+        interactor?.fecthMembers(request: MemberListModels.Members.Request())
     }
     
     func setup() {
@@ -83,11 +73,7 @@ final class MemberListController: UIViewController {
     }
     
     func prsentationSecondViewController(imageName: String) {
-        let secondViewController = MemberDetailController()
-        secondViewController.transitioningDelegate = self
-        secondViewController.modalPresentationStyle = .fullScreen
-        secondViewController.imageName = imageName
-        present(secondViewController, animated: true)
+        
     }
 
 }
@@ -106,7 +92,7 @@ extension MemberListController {
 extension MemberListController: MemberListDisplayLogic {
     func displaySomething(viewModel: MemberListModels.Members.ViewModel) {
         DispatchQueue.main.async {
-//            self.members = viewModel.members
+            self.members = viewModel.members
             self.collectionView.reloadData()
         }
     }
@@ -114,26 +100,30 @@ extension MemberListController: MemberListDisplayLogic {
 
 extension MemberListController: PinterestLayoutDelegate {
     func collectionView(_ collectionView: UICollectionView, heightForPhotoAtIndex indexPath: IndexPath) -> CGFloat {
-        return members[indexPath.item].height
+        return CGFloat(Int.random(in: 150...180))
     }
     
 }
 
 extension MemberListController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return members.count
+        return members?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MemberCell.identifier, for: indexPath) as? MemberCell else { return UICollectionViewCell() }
+        guard let member = members else { return UICollectionViewCell() }
+        
+        cell.configureCell(name: member[indexPath.row].name)
         cell.layer.cornerRadius = 10
+        
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         selectedCell = collectionView.cellForItem(at: indexPath) as? MemberCell
         selectedCellImageViewSnapshot = selectedCell?.imageView.snapshotView(afterScreenUpdates: false)
-        prsentationSecondViewController(imageName: "main")
+        router?.routeToDetail(member: members?[indexPath.row])
     }
     
 }
