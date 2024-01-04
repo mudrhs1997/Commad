@@ -21,11 +21,11 @@ final class MemberDetailController: UIViewController {
             self.data = data
             self.identifier = identifier
         }
-
+        
         func hash(into hasher: inout Hasher) {
             hasher.combine(self.identifier)
         }
-
+        
         static func == (lhs: Item, rhs: Item) -> Bool {
             lhs.identifier == rhs.identifier
         }
@@ -37,7 +37,10 @@ final class MemberDetailController: UIViewController {
     private lazy var dataSource: DataSource = configureDataSource()
     private lazy var snapshot: Snapshot = Snapshot()
     
-    private var member: Member?
+    var interactor: (MemberDetailBusinessLogic & MemberDetailDataStore)?
+    var router: (MemberDetailRoutingLogic & MemberDetailDataPassing)?
+    
+    var member: Member?
     
     let headerView = MemberDetailHeader()
     
@@ -52,9 +55,10 @@ final class MemberDetailController: UIViewController {
         return collectionView
     }()
     
-    init(member: Member?) {
+    init() {
         super.init(nibName: nil, bundle: nil)
-        self.member = member
+        setup()
+//        interactor.doSomething(request: MemberDetailModels.History.Request(member: member))
     }
     
     required init?(coder: NSCoder) {
@@ -70,19 +74,22 @@ final class MemberDetailController: UIViewController {
         setupView()
         snapshot.appendSections([.month, .day])
         snapshot.appendItems([Item(data: "")], toSection: .month)
-        snapshot.appendItems([Item(data: "")], toSection: .day)
-        snapshot.appendItems([Item(data: "")], toSection: .month)
-        snapshot.appendItems([Item(data: "")], toSection: .day)
-        snapshot.appendItems([Item(data: "")], toSection: .month)
-        snapshot.appendItems([Item(data: "")], toSection: .day)
-        snapshot.appendItems([Item(data: "")], toSection: .month)
-        snapshot.appendItems([Item(data: "")], toSection: .day)
-        snapshot.appendItems([Item(data: "")], toSection: .month)
-        snapshot.appendItems([Item(data: "")], toSection: .day)
-        snapshot.appendItems([Item(data: "")], toSection: .month)
-        snapshot.appendItems([Item(data: "")], toSection: .day)
         self.dataSource.apply(self.snapshot)
     }
+    
+    private func setup() {
+        let viewController = self
+        let interactor = MemberDetailInteractor()
+        let presenter = MemberDetailPresenter()
+        let router = MemberDetailRouter()
+        viewController.interactor = interactor
+        viewController.router = router
+        interactor.presenter = presenter
+        presenter.viewController = viewController
+        router.viewController = viewController
+        router.dataStore = interactor
+    }
+    
     
     private func registerCell() {
         collectionView.register(CollectionViewHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: CollectionViewHeader.identifier)
@@ -125,14 +132,14 @@ final class MemberDetailController: UIViewController {
             return view
         }
     }
-
+    
 }
 
 extension MemberDetailController {
     private func setupView() {
         view.addSubview(headerView)
         headerView.exitButton.addTarget(self, action: #selector(toggleButton), for: .touchUpInside)
-        headerView.nameLabel.text = member?.name
+        headerView.nameLabel.text = interactor?.member?.name
         headerView.snp.makeConstraints { make in
             make.top.leading.trailing.equalTo(view.safeAreaLayoutGuide)
             make.height.equalTo(350)

@@ -13,7 +13,7 @@ protocol MemberListDisplayLogic: AnyObject {
 
 final class MemberListController: UIViewController {
     var interactor: (MemberListBusinessLogic & MemberListDataStore)?
-    var router: MemberListRoutingLogic?
+    var router: (MemberListRoutingLogic & MemberListDataPassing)?
     
     var selectedCell: MemberCell?
     var selectedCellImageViewSnapshot: UIView?
@@ -21,7 +21,7 @@ final class MemberListController: UIViewController {
 
     var members: [Member]?
     
-    private let collectionView: UICollectionView = {
+    let collectionView: UICollectionView = {
         let flowLayout = PinterestLayout()
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
         return collectionView
@@ -65,6 +65,7 @@ final class MemberListController: UIViewController {
         interactor.presenter = presenter
         presenter.viewController = viewController
         router.viewController = viewController
+        router.dataStore = interactor
          
     }
     
@@ -100,7 +101,7 @@ extension MemberListController: MemberListDisplayLogic {
 
 extension MemberListController: PinterestLayoutDelegate {
     func collectionView(_ collectionView: UICollectionView, heightForPhotoAtIndex indexPath: IndexPath) -> CGFloat {
-        return CGFloat(Int.random(in: 150...180))
+        return 150
     }
     
 }
@@ -123,7 +124,7 @@ extension MemberListController: UICollectionViewDelegate, UICollectionViewDataSo
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         selectedCell = collectionView.cellForItem(at: indexPath) as? MemberCell
         selectedCellImageViewSnapshot = selectedCell?.imageView.snapshotView(afterScreenUpdates: false)
-        router?.routeToDetail(member: members?[indexPath.row])
+        router?.routeToDetail()
     }
     
 }

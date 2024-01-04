@@ -16,7 +16,6 @@ protocol MemberListBusinessLogic {
 }
 
 final class MemberListInteractor: MemberListDataStore, MemberListBusinessLogic {
-    
     var presenter: MemberListPresentationLogic?
     var worker: MemberListWorker?
     
@@ -25,6 +24,7 @@ final class MemberListInteractor: MemberListDataStore, MemberListBusinessLogic {
     func fecthMembers(request: MemberListModels.Members.Request) {
         worker = MemberListWorker()
         worker?.fetchMember({ response in
+            self.members = response.members
             self.presenter?.presentationMember(response: MemberListModels.Members.Response(members: response.members, isError: false, message: "Fields may not be empty."))
         })
     }

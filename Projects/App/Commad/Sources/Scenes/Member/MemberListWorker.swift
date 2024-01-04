@@ -21,7 +21,7 @@ class MemberListWorker: MemberListWorkerLogic {
         apiManager.fetchMembers().sink { result in
             switch result {
             case .finished:
-                print("Fetch Member List Decoding Error")
+                print("Fetch Member List Decoding")
             case .failure(_):
                 response(MemberListModels.Members.Response(isError: true, message: "Error"))
             }
