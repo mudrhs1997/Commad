@@ -7,41 +7,18 @@
 
 import UIKit
 
+protocol MemberDetailDisplayLogic: AnyObject {
+    func displayHistories(viewModel: MemberDetailModels.MemberHistory.ViewModel)
+}
+
 final class MemberDetailController: UIViewController {
-    enum Section: Int {
-        case month
-        case day
-    }
-    
-    struct Item: Hashable {
-        let data: Any
-        let identifier: UUID
-        
-        init(data: Any, identifier: UUID = UUID()) {
-            self.data = data
-            self.identifier = identifier
-        }
-        
-        func hash(into hasher: inout Hasher) {
-            hasher.combine(self.identifier)
-        }
-        
-        static func == (lhs: Item, rhs: Item) -> Bool {
-            lhs.identifier == rhs.identifier
-        }
-    }
-    
-    typealias DataSource = UICollectionViewDiffableDataSource<Section, Item>
-    typealias Snapshot = NSDiffableDataSourceSnapshot<Section, Item>
-    
-    private lazy var dataSource: DataSource = configureDataSource()
-    private lazy var snapshot: Snapshot = Snapshot()
-    
     var interactor: (MemberDetailBusinessLogic & MemberDetailDataStore)?
     var router: (MemberDetailRoutingLogic & MemberDetailDataPassing)?
     
-    var member: Member?
-    
+    private var year: String?
+    private var month: String?
+    private var histories: [History]?
+ 
     let headerView = MemberDetailHeader()
     
     private let collectionView: UICollectionView = {
@@ -58,7 +35,6 @@ final class MemberDetailController: UIViewController {
     init() {
         super.init(nibName: nil, bundle: nil)
         setup()
-//        interactor.doSomething(request: MemberDetailModels.History.Request(member: member))
     }
     
     required init?(coder: NSCoder) {
@@ -68,13 +44,12 @@ final class MemberDetailController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
-        collectionView.dataSource = dataSource
+        collectionView.dataSource = self
         collectionView.delegate = self
         registerCell()
         setupView()
-        snapshot.appendSections([.month, .day])
-        snapshot.appendItems([Item(data: "")], toSection: .month)
-        self.dataSource.apply(self.snapshot)
+        setDate()
+        fetchMemberHistory()
     }
     
     private func setup() {
@@ -90,46 +65,21 @@ final class MemberDetailController: UIViewController {
         router.dataStore = interactor
     }
     
+    private func setDate() {
+        let date = Date()
+        year = date.getToday(type: .year)
+        month = date.getToday(type: .month)
+    }
+    
     
     private func registerCell() {
         collectionView.register(CollectionViewHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: CollectionViewHeader.identifier)
         collectionView.register(MemberHistoryCell.self, forCellWithReuseIdentifier: MemberHistoryCell.identifier)
     }
     
-    private func configureDataSource() -> DataSource {
-        let dataSource = DataSource(collectionView: self.collectionView) { collectionView, indexPath, item in
-            guard let section = Section(rawValue: indexPath.section) else { return UICollectionViewCell() }
-            switch section {
-            case .month:
-                guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MemberHistoryCell.identifier, for: indexPath) as? MemberHistoryCell else { return UICollectionViewCell() }
-                cell.configureCell(day: Int.random(in: 1...31))
-                return cell
-                
-            case .day:
-                guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MemberHistoryCell.identifier, for: indexPath) as? MemberHistoryCell else { return UICollectionViewCell() }
-                cell.configureCell(day: 999)
-                return cell
-            }
-        }
-        
-        configureHeader(of: dataSource)
-        return dataSource
-    }
-    
-    private func configureHeader(of dataSource: DataSource) {
-        dataSource.supplementaryViewProvider = { collectionView, kind, indexPath in
-            let section = self.dataSource.snapshot().sectionIdentifiers[indexPath.section]
-            let view = collectionView.dequeueReusableSupplementaryView(ofKind: kind,
-                                                                       withReuseIdentifier: CollectionViewHeader.identifier,
-                                                                       for: indexPath) as? CollectionViewHeader
-            switch section {
-            case .month:
-                view?.configureCell(title: "12월")
-            case .day:
-                view?.configureCell(title: "11월")
-            }
-            
-            return view
+    private func fetchMemberHistory() {
+        if let year = year, let month = month {
+            interactor?.fetchMemberHistory(request: MemberDetailModels.MemberHistory.Request(year: year, month: month))
         }
     }
     
@@ -156,11 +106,21 @@ extension MemberDetailController {
     }
     
     @objc func toggleButton() {
-        dismiss(animated: true)
+        interactor?.checkIn(request: MemberDetailModels.CheckIn.Request())
     }
 }
 
-extension MemberDetailController: UICollectionViewDelegate {
+extension MemberDetailController: MemberDetailDisplayLogic {
+    func displayHistories(viewModel: MemberDetailModels.MemberHistory.ViewModel) {
+        DispatchQueue.main.async {
+            self.histories = viewModel.histories
+//            self.headerView.exitButton.isEnabled = false
+            self.collectionView.reloadData()
+        }
+    }
+}
+
+extension MemberDetailController: UICollectionViewDelegate, UICollectionViewDataSource {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if scrollView == self.collectionView {
             let originY: CGFloat = scrollView.contentOffset.y
@@ -177,7 +137,22 @@ extension MemberDetailController: UICollectionViewDelegate {
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 20
+        return histories?.count ?? 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: CollectionViewHeader.identifier, for: indexPath) as? CollectionViewHeader else { return UICollectionReusableView() }
+        header.configure(title: self.month ?? "")
+        return header
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let history = histories?[indexPath.row].historyDate,
+              let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MemberHistoryCell.identifier, for: indexPath) as? MemberHistoryCell else { return UICollectionViewCell() }
+        
+        cell.configureCell(day: history)
+        
+        return cell
     }
     
 }

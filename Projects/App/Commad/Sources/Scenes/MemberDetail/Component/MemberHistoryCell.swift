@@ -28,8 +28,8 @@ final class MemberHistoryCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configureCell(day: Int) {
-        dayLabel.text = String(day)
+    func configureCell(day: String) {
+        dayLabel.text = day
     }
     
 }

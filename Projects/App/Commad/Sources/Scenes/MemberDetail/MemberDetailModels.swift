@@ -13,20 +13,37 @@
 import UIKit
 
 enum MemberDetailModels {
-  // MARK: Use cases
-  enum History {
-    struct Request {
-        let member: Member
+    // MARK: Use cases
+    enum MemberHistory {
+        struct Request {
+            let year: String
+            let month: String
+        }
+        
+        struct Response {
+            var histories: [History]?
+            var isError: Bool
+            var message: String?
+        }
+        
+        struct ViewModel {
+            var histories: [History]
+        }
     }
-      
-    struct Response {
-        var isEntered: Bool?
-        var isError: Bool
-        var message: String?
+    
+    enum CheckIn {
+        struct Request {
+            
+        }
+        
+        struct Response {
+            var history: History?
+            var isError: Bool
+            var message: String?
+        }
+        
+        struct ViewModel {
+            var history: History
+        }
     }
-      
-    struct ViewModel {
-        var isEntered: Bool
-    }
-  }
 }

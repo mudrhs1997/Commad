@@ -36,10 +36,10 @@ final class NetworkService {
         var urlWithParams = baseURL + endpoint + "?"
         
         params.forEach { (key, value) in
-            urlWithParams += "\(key)=\(value)"
+            urlWithParams += "\(key)=\(value)&"
         }
-        
-        guard let url = URL(string: urlWithParams) else { return URL(string: "")! }
+
+        guard let url = URL(string: String(urlWithParams.dropLast())) else { return URL(string: "")! }
         
         return url
     }

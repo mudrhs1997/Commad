@@ -29,22 +29,40 @@ class APIService {
             .eraseToAnyPublisher()
     }
     
-    func memberHistory(member: Member) -> AnyPublisher<Bool, Error> {
+    func memberHistory(member: Member, year: String, month: String) -> AnyPublisher<[History], Error> {
         let params = [
-            "id": member.id
+            "id": member.id,
+            "year": year,
+            "month": month
         ] as [String: Any]
         
-        return NetworkService.shared.get(to: .memberhistory, params: params)
+        return NetworkService.shared.get(to: .history, params: params)
         .tryMap { data, response in
             print(String(data: data, encoding: .utf8))
             guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
-                print("http error")
                 throw URLError(.badServerResponse)
             }
             return data
         }
-        .decode(type: Bool.self, decoder: JSONDecoder())
+        .decode(type: [History].self, decoder: JSONDecoder())
         .eraseToAnyPublisher()
+    }
+    
+    func checkIn(member: Member) -> AnyPublisher<History, Error> {
+        let params = [
+            "id": member.id
+        ] as [String: Any]
+        
+        return NetworkService.shared.post(to: .checkIn, param: params)
+            .tryMap { data, response in
+                print(String(data: data, encoding: .utf8))
+                guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
+                    throw URLError(.badServerResponse)
+                }
+                return data
+            }
+            .decode(type: History.self, decoder: JSONDecoder())
+            .eraseToAnyPublisher()
     }
 }
 

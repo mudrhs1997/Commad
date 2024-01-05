@@ -13,12 +13,13 @@
 import UIKit
 
 protocol MemberDetailBusinessLogic {
-    func doSomething(request: MemberDetailModels.History.Request)
+    func fetchMemberHistory(request: MemberDetailModels.MemberHistory.Request)
+    func checkIn(request: MemberDetailModels.CheckIn.Request)
 }
 
 protocol MemberDetailDataStore {
     var member: Member? { get set }
-    var isEntered: Bool? { get set }
+//    var histories: [History]? { get set }
 }
 
 final class MemberDetailInteractor: MemberDetailBusinessLogic, MemberDetailDataStore {
@@ -27,13 +28,24 @@ final class MemberDetailInteractor: MemberDetailBusinessLogic, MemberDetailDataS
     var worker: MemberDetailWorker?
     
     var member: Member?
-    var isEntered: Bool?
+//    var histories: [History]?
     
     // MARK: Do something
-    func doSomething(request: MemberDetailModels.History.Request) {
+    func fetchMemberHistory(request: MemberDetailModels.MemberHistory.Request) {
         worker = MemberDetailWorker()
-        worker?.fetchMemberHistory(member: request.member) { response in
-            print(response.isEntered)
+        guard let member = self.member else { return }
+        worker?.fetchMemberHistory(member: member, year: request.year, month: request.month) { response in
+//            self.histories = response.histories
+            self.presenter?.presentHistories(response: MemberDetailModels.MemberHistory.Response(histories: response.histories, isError: false))
         }
+    }
+    
+    func checkIn(request: MemberDetailModels.CheckIn.Request) {
+        worker = MemberDetailWorker()
+        guard let member = self.member else { return }
+        worker?.checkIn(member: member, { response in
+//            self.presenter.presentAlert()
+            print(responseㄴ)
+        })
     }
 }

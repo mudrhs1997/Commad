@@ -13,16 +13,26 @@
 import UIKit
 
 protocol MemberDetailPresentationLogic {
-  func presentSomething(response: MemberDetailModels.History.Response)
+    func presentAlert(response: MemberDetailModels.CheckIn.Response)
+    func presentHistories(response: MemberDetailModels.MemberHistory.Response)
 }
 
 final class MemberDetailPresenter: MemberDetailPresentationLogic {
-  weak var viewController: MemberDetailController?
-  
-  // MARK: Do something
-  
-  func presentSomething(response: MemberDetailModels.History.Response) {
-      let viewModel = MemberDetailModels.History.ViewModel(isEntered: true)
-//      viewController?.displaySomething(viewModel: viewModel)
-  }
+    
+    
+    weak var viewController: MemberDetailController?
+    
+    // MARK: Do something
+    func presentAlert(response: MemberDetailModels.CheckIn.Response) {
+        guard let history = response.history else { return }
+        let viewModel = MemberDetailModels.CheckIn.ViewModel(history: history)
+        print(history)
+    }
+    
+    func presentHistories(response: MemberDetailModels.MemberHistory.Response) {
+        guard let histories = response.histories else { return }
+        let viewModel = MemberDetailModels.MemberHistory.ViewModel(histories: histories)
+        viewController?.displayHistories(viewModel: viewModel)
+    }
+    
 }

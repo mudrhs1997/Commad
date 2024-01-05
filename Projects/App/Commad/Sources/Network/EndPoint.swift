@@ -10,14 +10,14 @@ import Foundation
 
 enum Endpoint {
     case history
+    case checkIn
     case memberList
-    case memberhistory
     
     var endpoint: String {
         switch self {
         case .history: return "/history/one"
+        case .checkIn: return "/history"
         case .memberList: return "/member/info"
-        case .memberhistory: return "/member/history"
         }
     }
 }

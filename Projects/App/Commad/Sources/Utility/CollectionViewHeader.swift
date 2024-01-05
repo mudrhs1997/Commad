@@ -12,12 +12,27 @@ import UIKit
 final class CollectionViewHeader: UICollectionReusableView {
     static let identifier = "collectionViewHeader"
     
+    private let leftButton: UIButton = {
+        let button = UIButton()
+        button.backgroundColor = .black
+        button.setTitle("<", for: .normal)
+        return button
+    }()
+    
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 18)
         label.textColor = .black
         label.text = "12월"
         return label
+    }()
+    
+    
+    private let rightButton: UIButton = {
+        let button = UIButton()
+        button.backgroundColor = .black
+        button.setTitle(">", for: .normal)
+        return button
     }()
     
     override init(frame: CGRect) {
@@ -30,7 +45,7 @@ final class CollectionViewHeader: UICollectionReusableView {
         self.setupView()
     }
     
-    func configureCell(title: String) {
+    func configure(title: String) {
         titleLabel.text = title
     }
     
@@ -38,11 +53,24 @@ final class CollectionViewHeader: UICollectionReusableView {
 
 extension CollectionViewHeader {
     private func setupView() {
+        
+        addSubview(leftButton)
+        leftButton.snp.makeConstraints { make in
+            make.top.equalToSuperview()
+            make.leading.equalToSuperview().offset(10)
+            make.bottom.equalToSuperview().inset(5)
+        }
+        
+        addSubview(rightButton)
+        rightButton.snp.makeConstraints { make in
+            make.centerY.equalTo(leftButton.snp.centerY)
+            make.trailing.equalToSuperview().inset(10)
+        }
+        
         addSubview(titleLabel)
         titleLabel.snp.makeConstraints { make in
-            make.top.equalToSuperview()
-            make.leading.equalToSuperview().offset(8)
-            make.bottom.equalToSuperview().inset(5)
+            make.centerY.equalTo(leftButton.snp.centerY)
+            make.centerX.equalToSuperview()
         }
         
     }

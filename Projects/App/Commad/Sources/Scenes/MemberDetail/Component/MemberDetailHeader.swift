@@ -11,6 +11,7 @@ import UIKit
 final class MemberDetailHeader: UIView {
     let maxHeight: CGFloat = 350
     let minHeight: CGFloat = 180
+    var isEntered: Bool = false
     
     let imageView: UIImageView = {
         let imageView = UIImageView()
@@ -62,8 +63,8 @@ extension MemberDetailHeader {
         
         addSubview(exitButton)
         exitButton.snp.makeConstraints { make in
-            make.bottom.equalTo(imageView.snp.bottom)
-            make.leading.trailing.equalToSuperview()
+            make.bottom.equalTo(imageView.snp.bottom).inset(20)
+            make.leading.trailing.equalToSuperview().inset(15)
             make.height.equalTo(50)
         }
     }

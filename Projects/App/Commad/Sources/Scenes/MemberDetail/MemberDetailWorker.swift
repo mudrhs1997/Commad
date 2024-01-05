@@ -14,24 +14,40 @@ import UIKit
 import Combine
 
 protocol MemberDetailWorkerLogic {
-    func fetchMemberHistory(member: Member, _ response: @escaping (MemberDetailModels.History.Response) -> Void)
+    func fetchMemberHistory(member: Member, year: String, month: String, _ response: @escaping (MemberDetailModels.MemberHistory.Response) -> Void)
+    func checkIn(member: Member, _ response: @escaping (MemberDetailModels.MemberHistory.Response) -> Void)
 }
 
 final class MemberDetailWorker {
     private let apiManager = APIService()
     private var cancellables = Set<AnyCancellable>()
     
-    func fetchMemberHistory(member: Member, _ response: @escaping (MemberDetailModels.History.Response) -> Void) {
-        apiManager.memberHistory(member: member).sink { result in
+    func fetchMemberHistory(member: Member, year: String, month: String, _ response: @escaping (MemberDetailModels.MemberHistory.Response) -> Void) {
+        apiManager.memberHistory(member: member, year: year, month: month).sink { result in
             switch result {
             case .finished:
                 print("Fetch member history finished")
             case .failure(_):
-                response(MemberDetailModels.History.Response(isError: true, message: "Fetch member history error"))
+                response(MemberDetailModels.MemberHistory.Response(isError: true, message: "Fetch member history error"))
             }
         } receiveValue: { data in
-            response(MemberDetailModels.History.Response(isEntered: data, isError: false))
+            response(MemberDetailModels.MemberHistory.Response(histories: data, isError: false))
         }
         .store(in: &cancellables)
+    }
+    
+    func checkIn(member: Member, _ response: @escaping (MemberDetailModels.CheckIn.Response) -> Void) {
+        apiManager.checkIn(member: member).sink { result in
+            switch result {
+            case .finished:
+                print("CheckIn finished")
+            case .failure(_):
+                response(MemberDetailModels.CheckIn.Response(isError: true, message: "CheckIn error"))
+            }
+        } receiveValue: { data in
+            response(MemberDetailModels.CheckIn.Response(history: data, isError: false))
+        }
+        .store(in: &cancellables)
+
     }
 }
