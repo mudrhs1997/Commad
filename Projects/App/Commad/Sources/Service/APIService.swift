@@ -50,7 +50,7 @@ class APIService {
     
     func checkIn(member: Member) -> AnyPublisher<History, Error> {
         let params = [
-            "id": member.id
+            "id": member.id.uuidString
         ] as [String: Any]
         
         return NetworkService.shared.post(to: .checkIn, param: params)

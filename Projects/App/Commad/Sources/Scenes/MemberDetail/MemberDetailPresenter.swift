@@ -13,7 +13,7 @@
 import UIKit
 
 protocol MemberDetailPresentationLogic {
-    func presentAlert(response: MemberDetailModels.CheckIn.Response)
+    func presentCheckInAlert(response: MemberDetailModels.CheckIn.Response)
     func presentHistories(response: MemberDetailModels.MemberHistory.Response)
 }
 
@@ -23,10 +23,9 @@ final class MemberDetailPresenter: MemberDetailPresentationLogic {
     weak var viewController: MemberDetailController?
     
     // MARK: Do something
-    func presentAlert(response: MemberDetailModels.CheckIn.Response) {
+    func presentCheckInAlert(response: MemberDetailModels.CheckIn.Response) {
         guard let history = response.history else { return }
         let viewModel = MemberDetailModels.CheckIn.ViewModel(history: history)
-        print(history)
     }
     
     func presentHistories(response: MemberDetailModels.MemberHistory.Response) {

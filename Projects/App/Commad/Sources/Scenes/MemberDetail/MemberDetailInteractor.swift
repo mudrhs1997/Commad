@@ -44,8 +44,7 @@ final class MemberDetailInteractor: MemberDetailBusinessLogic, MemberDetailDataS
         worker = MemberDetailWorker()
         guard let member = self.member else { return }
         worker?.checkIn(member: member, { response in
-//            self.presenter.presentAlert()
-            print(responseㄴ)
+            self.presenter?.presentCheckInAlert(response: MemberDetailModels.CheckIn.Response(history: response.history, isError: false))
         })
     }
 }

@@ -9,6 +9,7 @@ import UIKit
 
 protocol MemberDetailDisplayLogic: AnyObject {
     func displayHistories(viewModel: MemberDetailModels.MemberHistory.ViewModel)
+    func displayCheckInAlert(viewModel: MemberDetailModels.CheckIn.ViewModel)
 }
 
 final class MemberDetailController: UIViewController {
@@ -88,7 +89,8 @@ final class MemberDetailController: UIViewController {
 extension MemberDetailController {
     private func setupView() {
         view.addSubview(headerView)
-        headerView.exitButton.addTarget(self, action: #selector(toggleButton), for: .touchUpInside)
+        headerView.checkInButton.addTarget(self, action: #selector(tapCheckInButton), for: .touchUpInside)
+        headerView.exitButton.addTarget(self, action: #selector(tapExitButton), for: .touchUpInside)
         headerView.nameLabel.text = interactor?.member?.name
         headerView.snp.makeConstraints { make in
             make.top.leading.trailing.equalTo(view.safeAreaLayoutGuide)
@@ -105,12 +107,24 @@ extension MemberDetailController {
         
     }
     
-    @objc func toggleButton() {
+    @objc func tapExitButton() {
+        dismiss(animated: true)
+    }
+    
+    @objc func tapCheckInButton() {
         interactor?.checkIn(request: MemberDetailModels.CheckIn.Request())
     }
 }
 
 extension MemberDetailController: MemberDetailDisplayLogic {
+    func displayCheckInAlert(viewModel: MemberDetailModels.CheckIn.ViewModel) {
+        DispatchQueue.main.async {
+            self.histories?.append(viewModel.history)
+            self.headerView.exitButton.backgroundColor = .gray
+            self.collectionView.reloadData()
+        }
+    }
+    
     func displayHistories(viewModel: MemberDetailModels.MemberHistory.ViewModel) {
         DispatchQueue.main.async {
             self.histories = viewModel.histories

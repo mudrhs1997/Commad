@@ -29,11 +29,18 @@ final class MemberDetailHeader: UIView {
         return label
     }()
     
-    let exitButton: UIButton = {
+    let checkInButton: UIButton = {
         let button = UIButton()
         button.setTitle("입장하기", for: .normal)
         button.backgroundColor = .link
         button.layer.cornerRadius = 18
+        return button
+    }()
+    
+    let exitButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("x", for: .normal)
+        button.backgroundColor = .black
         return button
     }()
 
@@ -63,6 +70,13 @@ extension MemberDetailHeader {
         
         addSubview(exitButton)
         exitButton.snp.makeConstraints { make in
+            make.top.equalTo(imageView.snp.top).offset(15)
+            make.trailing.equalToSuperview().inset(15)
+            make.height.width.equalTo(15)
+        }
+        
+        addSubview(checkInButton)
+        checkInButton.snp.makeConstraints { make in
             make.bottom.equalTo(imageView.snp.bottom).inset(20)
             make.leading.trailing.equalToSuperview().inset(15)
             make.height.equalTo(50)
