@@ -35,6 +35,7 @@ class HomeController: UIViewController {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         
         collectionView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.backgroundColor = .darkGray
         
         collectionView.register(HomeButtonCell.self, forCellWithReuseIdentifier: HomeButtonCell.identifier)
         
@@ -70,7 +71,7 @@ class HomeController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+        view.backgroundColor = .darkGray
         setupView()
         collectionView.delegate = self
         collectionView.dataSource = self

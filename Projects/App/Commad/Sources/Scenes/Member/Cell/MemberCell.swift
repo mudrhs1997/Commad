@@ -14,15 +14,15 @@ class MemberCell: UICollectionViewCell {
         var imageView = UIImageView()
         imageView.image = UIImage(named: "main")
         imageView.contentMode = .scaleAspectFit
-        imageView.tintColor = .black
+        imageView.tintColor = .white
         return imageView
     }()
     
     let nameLabel: UILabel = {
         var label = UILabel()
         label.text = "정명곤"
-        label.tintColor = .black
-        label.font = .systemFont(ofSize: 18)
+        label.textColor = .white
+        label.font = .systemFont(ofSize: 18, weight: .bold)
         return label
     }()
     

@@ -24,6 +24,7 @@ final class MemberListController: UIViewController {
     let collectionView: UICollectionView = {
         let flowLayout = PinterestLayout()
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
+        collectionView.backgroundColor = .darkGray
         return collectionView
     }()
     

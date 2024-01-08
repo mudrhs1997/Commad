@@ -17,6 +17,15 @@ class HomeButtonCell: UICollectionViewCell {
         return label
     }()
     
+    private let rightIcon: UIImageView = {
+        let imageView = UIImageView()
+        let imageConfigure = UIImage.SymbolConfiguration(weight: .bold)
+        imageView.image = UIImage(systemName: "chevron.right", withConfiguration: imageConfigure)
+        imageView.tintColor = .white
+        imageView.contentMode = .scaleAspectFit
+        return imageView
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = .darkGray
@@ -40,6 +49,12 @@ extension HomeButtonCell {
         addSubview(titleLabel)
         titleLabel.snp.makeConstraints { make in
             make.top.leading.equalToSuperview().offset(10)
+        }
+        
+        addSubview(rightIcon)
+        rightIcon.snp.makeConstraints { make in
+            make.centerY.equalTo(titleLabel)
+            make.trailing.equalToSuperview().inset(10)
         }
     }
 }
